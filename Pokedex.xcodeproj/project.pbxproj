@@ -16,6 +16,8 @@
 		297FE5822895AECC008EC267 /* PokedexUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FE5812895AECC008EC267 /* PokedexUITestsLaunchTests.swift */; };
 		297FE5922895B013008EC267 /* PokemonCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FE5912895B013008EC267 /* PokemonCard.swift */; };
 		297FE5982895B832008EC267 /* PokedexView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FE5972895B832008EC267 /* PokedexView.swift */; };
+		297FE59A2895BDE9008EC267 /* Pokemon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FE5992895BDE9008EC267 /* Pokemon.swift */; };
+		297FE59C2895C4BB008EC267 /* PokemonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FE59B2895C4BB008EC267 /* PokemonView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +50,8 @@
 		297FE5812895AECC008EC267 /* PokedexUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		297FE5912895B013008EC267 /* PokemonCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonCard.swift; sourceTree = "<group>"; };
 		297FE5972895B832008EC267 /* PokedexView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexView.swift; sourceTree = "<group>"; };
+		297FE5992895BDE9008EC267 /* Pokemon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pokemon.swift; sourceTree = "<group>"; };
+		297FE59B2895C4BB008EC267 /* PokemonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,6 +141,7 @@
 		297FE58E2895AFC1008EC267 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				297FE5992895BDE9008EC267 /* Pokemon.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -146,6 +151,7 @@
 			children = (
 				297FE5912895B013008EC267 /* PokemonCard.swift */,
 				297FE5972895B832008EC267 /* PokedexView.swift */,
+				297FE59B2895C4BB008EC267 /* PokemonView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -287,6 +293,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				297FE59C2895C4BB008EC267 /* PokemonView.swift in Sources */,
+				297FE59A2895BDE9008EC267 /* Pokemon.swift in Sources */,
 				297FE5672895AEC7008EC267 /* ContentView.swift in Sources */,
 				297FE5922895B013008EC267 /* PokemonCard.swift in Sources */,
 				297FE5652895AEC7008EC267 /* PokedexApp.swift in Sources */,
