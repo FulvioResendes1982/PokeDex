@@ -59,10 +59,6 @@ struct PokemonCard: View {
         .background(backgroundColor)
         .cornerRadius(12)
         .shadow(color: backgroundColor, radius: 6, x: 0.0, y: 0.0)
-        .onTapGesture {
-            print("Tap on \(pokemon.name): \(pokemon.id), \(pokemon.type), \(pokemon.imageUrl)")
-        }
-        
     }
 }
 
