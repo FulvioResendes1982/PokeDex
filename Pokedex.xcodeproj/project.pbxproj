@@ -104,10 +104,10 @@
 		297FE5632895AEC7008EC267 /* Pokedex */ = {
 			isa = PBXGroup;
 			children = (
-				297FE5902895AFD1008EC267 /* ViewModel */,
-				297FE58F2895AFC5008EC267 /* View */,
 				297FE58E2895AFC1008EC267 /* Model */,
+				297FE58F2895AFC5008EC267 /* View */,
 				297FE5642895AEC7008EC267 /* PokedexApp.swift */,
+				297FE5902895AFD1008EC267 /* ViewModel */,
 				297FE5682895AECC008EC267 /* Assets.xcassets */,
 				297FE56A2895AECC008EC267 /* Preview Content */,
 			);

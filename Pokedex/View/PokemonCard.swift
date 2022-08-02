@@ -10,15 +10,31 @@ import Kingfisher
 
 struct PokemonCard: View {
     let pokemon: Pokemon
+    let pokemonViewModel: PokemonViewModel
+    let backgroundColor: Color
+    
+    init(pokemon: Pokemon, pokemonViewModel: PokemonViewModel) {
+        self.pokemon = pokemon
+        self.pokemonViewModel = pokemonViewModel
+        self.backgroundColor = Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type))
+    }
     
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
-                Text(pokemon.name.capitalized)
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding(.top, 4)
-                    .padding(.leading)
+                HStack {
+                    Text(pokemon.name.capitalized)
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding(.top, 10)
+                        .padding(.leading)
+                    
+                    Text("#\(pokemon.id)")
+                        .font(.subheadline)
+                        .foregroundColor(.white)
+                        .padding(.top, 10)
+                        .padding(.leading, 2)
+                }
                 
                 HStack {
                     Text(pokemon.type.capitalized)
@@ -35,16 +51,16 @@ struct PokemonCard: View {
                     KFImage(URL(string: pokemon.imageUrl))
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 68, height: 68)
-                        .padding([.bottom, .trailing], 4)
+                        .frame(width: 65, height: 65)
+                        .padding([.bottom, .trailing], 10)
                 }
             }
         }
-        .background(Color.green)
+        .background(backgroundColor)
         .cornerRadius(12)
-        .shadow(color: .green, radius: 6, x: 0.0, y: 0.0)
+        .shadow(color: backgroundColor, radius: 6, x: 0.0, y: 0.0)
         .onTapGesture {
-            print("Tap on \(pokemon.name)")
+            print("Tap on \(pokemon.name): \(pokemon.id), \(pokemon.type), \(pokemon.imageUrl)")
         }
         
     }
@@ -52,6 +68,6 @@ struct PokemonCard: View {
 
 struct PokemonCard_Previews: PreviewProvider {
     static var previews: some View {
-        PokemonCard(pokemon: MOCK_POKEMON[1])
+        PokemonCard(pokemon: MOCK_POKEMON[0], pokemonViewModel: PokemonViewModel())
     }
 }
