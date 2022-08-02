@@ -37,6 +37,7 @@ struct PokedexView: View {
                 .navigationTitle("Doroke's Pokedex")
             }
             .searchable(text: $searchText)
+            .padding(.top, 10)
         }
     }
     
