@@ -14,8 +14,8 @@ struct PokedexView: View {
         NavigationView {
             ScrollView {
                 LazyVGrid(columns: gridItems, spacing: 20) {
-                    ForEach(0..<MOCK_POKEMON.count) { i in
-                        PokemonCard(pokemon: MOCK_POKEMON[i])
+                    ForEach(0..<151) { i in
+                        PokemonCard(pokemon: MOCK_POKEMON[i%10])
                     }
                 }
             }
