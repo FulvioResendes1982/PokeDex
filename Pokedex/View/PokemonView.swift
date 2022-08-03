@@ -16,35 +16,87 @@ struct PokemonView: View {
     let color: Color = .blue
     
     var body: some View {
-        VStack {
-            MapView()
+        
+        ZStack {
+//
+//            Color(red: 0.1, green: 0.93, blue: 0.95)
+//                .edgesIgnoringSafeArea(.top)
+//            LinearGradient(gradient: Gradient(colors: [Color(.yellow), Color.white]), startPoint: .top, endPoint: .bottom)
+//                            .ignoresSafeArea()
+//
+//                            Color.white.offset(y: 300)
             
-            Image("1")
-//            KFImage(URL(string: pokemon.imageUrl))
-                .resizable()
-                .scaledToFit()
-                .frame(width: 200, height: 200)
-                .padding([.bottom, .trailing], 10)
-            
-            // for testing
-//            Image("1")
-//                .clipShape(Circle())
-//                .overlay(Circle()
-//                    .stroke(Color(.white), lineWidth: 4))
-//                .shadow(color: .red, radius: 8)
-            
-            Text("Random: \(Int.random(in: 1..<100))")
-            
-            Text(pokemon.name.capitalized)
-            
-            Text(pokemon.description)
-            
-            Text("\(pokemon.height)")
-            Text("\(pokemon.weight)")
-            Text("\(pokemon.defense)")
-            
-            
+            ScrollView {
+                
+                VStack {
+                    MapView()
+                        .edgesIgnoringSafeArea(.top)
+                        .frame(height: 300)
+                    
+                    
+                    Image("1")
+//                                KFImage(URL(string: pokemon.imageUrl))
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 200, height: 200)
+                        .padding([.bottom, .trailing], 10)
+//                        .offset(y: -100)
+//                        .padding(.bottom, -100)
+                    
+                    // for testing
+                    //            Image("1")
+//                    KFImage(URL(string: pokemon.imageUrl))
+//                                    .clipShape(Circle())
+//                                    .overlay(Circle()
+//                                        .stroke(Color(.white), lineWidth: 4))
+//                                    .shadow(color: .red, radius: 8)
+//                                    .offset(y: -100)
+//                                    .padding(.bottom, -100)
+                    
+                    Text("Random: \(Int.random(in: 1..<100))")
+                    
+                    Text(pokemon.name.capitalized)
+                    
+                    Text(pokemon.description)
+                    
+                    Text("\(pokemon.height)")
+                    Text("\(pokemon.weight)")
+                    Text("\(pokemon.defense)")
+                    
+                    Group {
+                        Text("Haha")
+                        Text("Haha")
+                        Text("Haha")
+                        Text("Haha")
+                        Text("\(pokemon.height)")
+                        Text("\(pokemon.weight)")
+                        Text("\(pokemon.defense)")
+                        
+                    }
+                    
+                    Group {
+                        Text("Haha")
+                        Text("Haha")
+                        Text("Haha")
+                        Text("Haha")
+                        Text("\(pokemon.height)")
+                        Text("\(pokemon.weight)")
+                        Text("\(pokemon.defense)")
+                        
+                    }
+                    
+//                    HStack { Spacer() }
+                }
+//                .background(.white)
+//                 .cornerRadius(40)
+//                 .padding(.top, -40)
+//                 .zIndex(-1)
+                
+                        .navigationTitle(pokemon.name.capitalized)
+                        .navigationBarTitleDisplayMode(.inline)
+            }
         }
+        
 //        VStack {
 //            KFImage(URL(string: pokemon.imageUrl))
 //                .resizable()
@@ -73,6 +125,7 @@ struct PokemonView: View {
 //        }
 //        .padding(10)
     }
+        
 }
 
 struct PokemonView_Previews: PreviewProvider {

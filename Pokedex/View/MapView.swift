@@ -18,14 +18,20 @@ struct MapView: View {
 //    var coordinate: CLLocationCoordinate2D
     
 //    @State private var region = MKCoordinateRegion()
+    
     @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 10.762622, longitude: 106.6601), span: MKCoordinateSpan(latitudeDelta: 5, longitudeDelta: 5))
+        center: CLLocationCoordinate2D(latitude: 16.5626, longitude: 105.6601),
+        span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
+    
+//    @State private var text: CLLocationCoordinate2D
+    
+    @State var showDescription = false
     
     let annotations = [
-        City(name: "London", coordinate: CLLocationCoordinate2D(latitude: 10.872622, longitude: 106.890172)),
-        City(name: "Paris", coordinate: CLLocationCoordinate2D(latitude: 10.982622, longitude: 106.680172)),
-        City(name: "Rome", coordinate: CLLocationCoordinate2D(latitude: 10.152622, longitude: 106.770172)),
-        City(name: "Washington DC", coordinate: CLLocationCoordinate2D(latitude: 10.792622, longitude: 107.661172))
+        City(name: "Ho Chi Minh city", coordinate: CLLocationCoordinate2D(latitude: 10.836, longitude: 106.650)),
+        City(name: "Dalat", coordinate: CLLocationCoordinate2D(latitude: 11.944875531315308, longitude: 108.42520976525859)),
+        City(name: "Da Nang", coordinate: CLLocationCoordinate2D(latitude: 16.03023352196046, longitude: 108.18158667392687)),
+        City(name: "Ha Noi", coordinate: CLLocationCoordinate2D(latitude: 21.04391576875771, longitude: 105.7975599458177))
     ]
 
     var body: some View {
@@ -39,21 +45,28 @@ struct MapView: View {
                     .resizable()
                     .scaledToFit()
                     
-//                    .clipShape(Circle())
-//                    .overlay(Circle()
-//                        .stroke(Color(.white), lineWidth: 1))
+                    .clipShape(Circle())
+                    .overlay(Circle()
+                        .stroke(Color(.white), lineWidth: 1))
                     .shadow(color: .red, radius: 4)
                     .frame(width: 30, height: 30)
+                    .onTapGesture {
+                        self.showDescription.toggle()
+                    }
+                
+                if showDescription {
+                    Text($0.coordinate)
+                }
                 
             }
             
                 
         }
-        .frame(width: 400, height: 300)
 //            .onAppear {
 //                setRegion(coordinate)
 //            }
     }
+    
     
     private func setRegion(_ coordinate: CLLocationCoordinate2D) {
         region = MKCoordinateRegion(
