@@ -51,14 +51,14 @@ struct PokemonCard: View {
                     KFImage(URL(string: pokemon.imageUrl))
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 65, height: 65)
-                        .padding([.bottom, .trailing], 10)
+                        .frame(width: 60, height: 60)
+                        .padding([.bottom, .trailing], 8)
                 }
             }
         }
         .background(backgroundColor)
         .cornerRadius(12)
-        .shadow(color: backgroundColor, radius: 6, x: 0.0, y: 0.0)
+        .shadow(color: backgroundColor, radius: 4, x: 1.0, y: 1.0)
     }
 }
 

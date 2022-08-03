@@ -34,10 +34,10 @@ struct PokedexView: View {
                 }
                 Text(status)
                     .padding(.vertical, 15)
-                .navigationTitle("Doroke's Pokedex")
+                    .navigationTitle("Doroke's Pokedex")
             }
-            .searchable(text: $searchText)
-            .padding(.top, 10)
+//            .searchable(text: $searchText)
+            .padding(10)
         }
     }
     
@@ -46,7 +46,7 @@ struct PokedexView: View {
         
         if (viewModel.pokemons.count == 0) {
             return "Loading..."
-        } else if filteredPokemons.count == 0 {
+        } else if (filteredPokemons.count == 0) {
             return "No pokemon found :("
         } else {
             pokeCount = filteredPokemons.count > 1 ? "\(filteredPokemons.count) pokemons" : "\(filteredPokemons.count) pokemon"
