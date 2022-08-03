@@ -26,8 +26,8 @@ struct Pokemon: Decodable, Identifiable {
 
 let MOCK_POKEMON: [Pokemon] = [
     .init(id: 0, name: "Bulbasaur", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
-    .init(id: 1, name: "Bulbasaur 1", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
-    .init(id: 2, name: "Bulbasaur 2", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
-    .init(id: 3, name: "Bulbasaur 3", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
-    .init(id: 4, name: "Zed", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4)
+//    .init(id: 1, name: "Bulbasaur 1", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
+//    .init(id: 2, name: "Bulbasaur 2", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
+//    .init(id: 3, name: "Bulbasaur 3", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
+//    .init(id: 4, name: "Zed", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4)
 ]
