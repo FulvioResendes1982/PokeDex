@@ -41,6 +41,10 @@ struct PokemonView: View {
 //                                                                        Color.white.offset(y: 300)
                     VStack {
                         
+                        HStack {
+                            
+                            Spacer()
+                        
                         //                    Image("1")
                         KFImage(URL(string: pokemon.imageUrl))
                             .resizable()
@@ -49,6 +53,9 @@ struct PokemonView: View {
                             .padding([.bottom, .trailing], 10)
 //                                                .offset(y: -80)
 //                                                .padding(.bottom, -80)
+                            
+                         Spacer()
+                        }
                         
                         // for testing
                         //            Image("1")
@@ -80,8 +87,8 @@ struct PokemonView: View {
                     .background(.white)
                     .cornerRadius(40)
                     .padding(.top, -100)
-//                    .zIndex(1)
-                    .frame(width: 440)
+////                    .zIndex(1)
+//                    .frame(width: 440)
                     
                    
                     
