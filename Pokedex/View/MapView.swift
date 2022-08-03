@@ -30,6 +30,8 @@ let cities = [
     City(name: "Hai Phong", coordinate: CLLocationCoordinate2D(latitude: 20.834369242326616, longitude: 106.65764731824288))
 ]
 
+let vietnam = CLLocationCoordinate2D(latitude: 14.0626, longitude: 105.6601)
+
 struct MapView: View {
 //    var coordinate: CLLocationCoordinate2D
     
@@ -37,9 +39,10 @@ struct MapView: View {
     
     let pokemon: Pokemon
     
+    
     @State private var region = MKCoordinateRegion(
-        center: CLLocationCoordinate2D(latitude: 16.5626, longitude: 105.6601),
-        span: MKCoordinateSpan(latitudeDelta: 15, longitudeDelta: 15))
+        center: vietnam,
+        span: MKCoordinateSpan(latitudeDelta: 20, longitudeDelta: 20))
     
 //    @State private var text: CLLocationCoordinate2D
     

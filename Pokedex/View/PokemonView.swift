@@ -15,6 +15,16 @@ struct PokemonView: View {
     var value = 350
     let color: Color = .blue
     
+    let pokemonViewModel: PokemonViewModel
+    let backgroundColor: Color
+    
+    init(pokemon: Pokemon, pokemonViewModel: PokemonViewModel) {
+        self.pokemon = pokemon
+        self.pokemonViewModel = pokemonViewModel
+        self.backgroundColor = Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type))
+    }
+    
+    
     var body: some View {
         
 
@@ -33,14 +43,14 @@ struct PokemonView: View {
                     .edgesIgnoringSafeArea(.top)
                     .frame(height: 350)
                 
-                
-                    
-//                    LinearGradient(gradient: Gradient(colors: [Color(.yellow), Color.white]), startPoint: .top, endPoint: .bottom)
-//                                                                        .ignoresSafeArea()
-                    
-//                                                                        Color.white.offset(y: 300)
-                    VStack {
                         
+                        ZStack {
+                            // simply remove this line for clean white background
+                            LinearGradient(gradient: Gradient(colors: [self.backgroundColor, Color.white]), startPoint: .top, endPoint: .bottom)
+                                                                                .ignoresSafeArea()
+
+                            VStack {
+                            
                         HStack {
                             
                             Spacer()
@@ -53,9 +63,12 @@ struct PokemonView: View {
                             .padding([.bottom, .trailing], 10)
 //                                                .offset(y: -80)
 //                                                .padding(.bottom, -80)
+                            .padding(.top, 20)
                             
                          Spacer()
+                            
                         }
+                        
                         
                         // for testing
                         //            Image("1")
@@ -67,9 +80,11 @@ struct PokemonView: View {
                         //                                    .offset(y: -100)
                         //                                    .padding(.bottom, -100)
                         
-                        Text("Random: \(Int.random(in: 1..<100))")
+                            
                         
                         Text(pokemon.name.capitalized)
+                            .font(.system(size: 30))
+                            .bold()
                         
                         Text(pokemon.description)
                         
@@ -84,12 +99,13 @@ struct PokemonView: View {
                         
                         //                    HStack { Spacer() }
                     }
+                        }
                     .background(.white)
                     .cornerRadius(40)
                     .padding(.top, -100)
-////                    .zIndex(1)
+                    .zIndex(1)
 //                    .frame(width: 440)
-                    
+//                }
                    
                     
                 
@@ -97,6 +113,7 @@ struct PokemonView: View {
         }
         .navigationTitle(pokemon.name.capitalized)
         .navigationBarTitleDisplayMode(.inline)
+
         
         //        VStack {
         //            KFImage(URL(string: pokemon.imageUrl))
@@ -129,8 +146,8 @@ struct PokemonView: View {
     
 }
 
-struct PokemonView_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonView(pokemon: MOCK_POKEMON[0])
-    }
-}
+//struct PokemonView_Previews: PreviewProvider {
+//    static var previews: some View {
+////        PokemonView(pokemon: MOCK_POKEMON[0])
+//    }
+//}

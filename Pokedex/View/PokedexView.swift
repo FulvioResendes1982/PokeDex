@@ -19,7 +19,7 @@ struct PokedexView: View {
                 LazyVGrid(columns: gridItems, spacing: 16) {
                     ForEach(filteredPokemons) { pokemon in
                         NavigationLink(
-                            destination: PokemonView(pokemon: pokemon),
+                            destination: PokemonView(pokemon: pokemon, pokemonViewModel: viewModel),
                             label: { PokemonCard(pokemon: pokemon, pokemonViewModel: viewModel) }
                         )
                         
@@ -31,12 +31,23 @@ struct PokedexView: View {
                         //                        }
                     }
                     
+                    
                 }
                 Text(status)
                     .padding(.vertical, 15)
                     .navigationTitle("Doroke's Pokedex")
+                    .navigationBarItems(leading:
+                                            NavigationLink(
+                                                destination: Test(),
+                                                label: { Image(systemName: "person.crop.circle").imageScale(.large) }
+                                            ), trailing: Button(action: {
+                                                print("Reload button pressed...")
+                                            }) {
+                                                Text("Author")
+                                            }
+                    )
             }
-//            .searchable(text: $searchText)
+            .searchable(text: $searchText)
             .padding(10)
         }
     }
