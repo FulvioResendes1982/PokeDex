@@ -11,6 +11,7 @@ import Kingfisher
 struct FavoriteListView: View {
 //    @ObservedObject var favoritePokemons = FavoritePokemon()
     var favoritePokemons: FavoritePokemon
+    var viewModel: PokemonViewModel
     
     
     var body: some View {
@@ -20,26 +21,56 @@ struct FavoriteListView: View {
 //        }
 //        .onDelete(perform: delete)
 //        }
+        if (favoritePokemons.myList.count == 0) {
+            Spacer()
+            Text("You haven't added Pokemon into your favorite list")
+            Spacer()
+        }
         
         NavigationView {
                     List {
                         ForEach(favoritePokemons.myList) { pokemon in
-                            HStack {
-                                
-                                Text("#\(pokemon.id)")
-                                
-                                Text(pokemon.name.capitalized)
-                                
-                                
-                                Spacer()
-                                
-                                KFImage(URL(string: pokemon.imageUrl))
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 80, height: 80)
-//                                    .padding([.bottom, .trailing], 8)
-                                
-                            }
+                            NavigationLink(
+                                destination: PokemonView(pokemon: pokemon, pokemonViewModel: viewModel, favoritePokemons: favoritePokemons),
+                                //                                label: { PokemonCard(pokemon: pokemon, pokemonViewModel: viewModel) }
+                                label: {
+                                    HStack {
+                                        
+                                        Text("#\(pokemon.id)")
+                                        
+                                        Text(pokemon.name.capitalized)
+                                        
+                                        
+                                        Spacer()
+                                        
+                                        KFImage(URL(string: pokemon.imageUrl))
+                                            .resizable()
+                                            .scaledToFit()
+                                            .frame(width: 80, height: 80)
+                                        //                                    .padding([.bottom, .trailing], 8)
+                                        
+                                        
+                                    }
+                                    //                                    .navigationBarTitle("")
+                                    //                                    .navigationBarHidden(true)
+                                }
+                            )
+                            //                            HStack {
+                            //
+//                                Text("#\(pokemon.id)")
+//
+//                                Text(pokemon.name.capitalized)
+//
+//
+//                                Spacer()
+//
+//                                KFImage(URL(string: pokemon.imageUrl))
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .frame(width: 80, height: 80)
+////                                    .padding([.bottom, .trailing], 8)
+//
+//                            }
                             
                             
                         }

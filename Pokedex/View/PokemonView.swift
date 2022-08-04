@@ -38,7 +38,7 @@ struct PokemonView: View {
     }
     
     var foreverAnimation: Animation {
-        Animation.linear(duration: 5.0)
+        Animation.linear(duration: 4.0)
             .repeatForever(autoreverses: false)
     }
 

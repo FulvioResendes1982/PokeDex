@@ -40,7 +40,7 @@ struct PokedexView: View {
                     .padding(.vertical, 15)
                     .navigationTitle("Doroke's Pokedex")
                     .navigationBarItems(leading: NavigationLink(
-                        destination: FavoriteListView(favoritePokemons: favoritePokemons),
+                        destination: FavoriteListView(favoritePokemons: favoritePokemons, viewModel: viewModel),
 //                        label: { Image(systemName: "heart.fill").imageScale(.large).foregroundColor(.red) }
                         label: { Image("pokeball")
                                 .resizable()
