@@ -7,11 +7,18 @@
 
 import SwiftUI
 
+class FavoritePokemon: ObservableObject {
+//    var id = UUID()
+    @Published var myList = [Pokemon]()
+}
+
 struct PokedexView: View {
     private let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
     @ObservedObject var viewModel = PokemonViewModel()
     @State private var searchText: String = ""
-
+    
+    @ObservedObject var favoritePokemons = FavoritePokemon()
+    
     
     var body: some View {
         NavigationView {
@@ -19,7 +26,7 @@ struct PokedexView: View {
                 LazyVGrid(columns: gridItems, spacing: 16) {
                     ForEach(filteredPokemons) { pokemon in
                         NavigationLink(
-                            destination: PokemonView(pokemon: pokemon, pokemonViewModel: viewModel),
+                            destination: PokemonView(pokemon: pokemon, pokemonViewModel: viewModel, favoritePokemons: favoritePokemons),
                             label: { PokemonCard(pokemon: pokemon, pokemonViewModel: viewModel) }
                         )
                         
@@ -36,7 +43,10 @@ struct PokedexView: View {
                 Text(status)
                     .padding(.vertical, 15)
                     .navigationTitle("Doroke's Pokedex")
-                    .navigationBarItems(leading: Text("Favorite list"),
+                    .navigationBarItems(leading: NavigationLink(
+                        destination: FavoriteListView(favoritePokemons: favoritePokemons),
+                        label: { Text("Favorite list") }
+                    ),
                                         trailing: NavigationLink(
                                             destination: Test(),
                                             label: { Image(systemName: "person.crop.circle").imageScale(.large) }

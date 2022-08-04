@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		291FD4E9289B0DE9006FFB5B /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FD4E8289B0DE9006FFB5B /* MapView.swift */; };
 		291FD4EB289B3ECA006FFB5B /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FD4EA289B3ECA006FFB5B /* Test.swift */; };
+		291FD4ED289C3C9C006FFB5B /* FavoriteListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 291FD4EC289C3C9C006FFB5B /* FavoriteListView.swift */; };
 		292998C6289917B6006C7131 /* PokemonViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 292998C5289917B6006C7131 /* PokemonViewModel.swift */; };
 		292998C9289926B2006C7131 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 292998C8289926B2006C7131 /* Kingfisher */; };
 		297FE5652895AEC7008EC267 /* PokedexApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 297FE5642895AEC7008EC267 /* PokedexApp.swift */; };
@@ -43,6 +44,7 @@
 /* Begin PBXFileReference section */
 		291FD4E8289B0DE9006FFB5B /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		291FD4EA289B3ECA006FFB5B /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
+		291FD4EC289C3C9C006FFB5B /* FavoriteListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteListView.swift; sourceTree = "<group>"; };
 		292998C5289917B6006C7131 /* PokemonViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokemonViewModel.swift; sourceTree = "<group>"; };
 		297FE5612895AEC7008EC267 /* Pokedex.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Pokedex.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		297FE5642895AEC7008EC267 /* PokedexApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PokedexApp.swift; sourceTree = "<group>"; };
@@ -158,6 +160,7 @@
 				297FE5972895B832008EC267 /* PokedexView.swift */,
 				297FE59B2895C4BB008EC267 /* PokemonView.swift */,
 				291FD4E8289B0DE9006FFB5B /* MapView.swift */,
+				291FD4EC289C3C9C006FFB5B /* FavoriteListView.swift */,
 				291FD4EA289B3ECA006FFB5B /* Test.swift */,
 			);
 			path = View;
@@ -309,6 +312,7 @@
 			files = (
 				291FD4E9289B0DE9006FFB5B /* MapView.swift in Sources */,
 				297FE59C2895C4BB008EC267 /* PokemonView.swift in Sources */,
+				291FD4ED289C3C9C006FFB5B /* FavoriteListView.swift in Sources */,
 				297FE59A2895BDE9008EC267 /* Pokemon.swift in Sources */,
 				292998C6289917B6006C7131 /* PokemonViewModel.swift in Sources */,
 				297FE5922895B013008EC267 /* PokemonCard.swift in Sources */,

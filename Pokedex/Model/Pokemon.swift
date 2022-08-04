@@ -18,11 +18,12 @@ struct Pokemon: Decodable, Identifiable {
     let defense: Int
     let height: Int
     let weight: Int
+    
+//    var isFavorite: Bool = false
 }
 
 
-// Decodable: A type that can decode itself from an external representation.
-// it looks at the raw data given back, and automatically match properties with the ones from data
+
 
 let MOCK_POKEMON: [Pokemon] = [
     .init(id: 0, name: "Bulbasaur", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
@@ -31,3 +32,8 @@ let MOCK_POKEMON: [Pokemon] = [
 //    .init(id: 3, name: "Bulbasaur 3", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4),
 //    .init(id: 4, name: "Zed", imageUrl: "1", type: "poison", description: "description", attack: 1, defense: 2, height: 3, weight: 4)
 ]
+
+
+
+// Decodable: A type that can decode itself from an external representation.
+// it looks at the raw data given back, and automatically match properties with the ones from data

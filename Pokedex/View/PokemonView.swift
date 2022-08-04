@@ -12,18 +12,21 @@ import MapKit
 
 struct PokemonView: View {
     let pokemon: Pokemon
-    var value = 350
-    let color: Color = .blue
+    let favoritePokemons: FavoritePokemon
+//    var value = 350
+//    let color: Color = .blue
     
-    let pokemonViewModel: PokemonViewModel
+    @State var pokemonViewModel: PokemonViewModel
     let backgroundColor: Color
     
-    init(pokemon: Pokemon, pokemonViewModel: PokemonViewModel) {
+    init(pokemon: Pokemon, pokemonViewModel: PokemonViewModel, favoritePokemons: FavoritePokemon) {
         self.pokemon = pokemon
         self.pokemonViewModel = pokemonViewModel
         self.backgroundColor = Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type))
+        self.favoritePokemons = favoritePokemons
     }
     
+    @State private var showDialogState = false
     
     var body: some View {
         
@@ -72,7 +75,9 @@ struct PokemonView: View {
                                         //                                    .resizable()
                                         //                                    .frame(width: 200, height: 200)
                                         
-                                        Button(action: {}) {
+                                        Button(action: {
+                                            showDialogState = true
+                                        }) {
                                             KFImage(URL(string: pokemon.imageUrl))
                                                 .resizable()
                                                 .scaledToFit()
@@ -81,6 +86,22 @@ struct PokemonView: View {
                                             //                                                .offset(y: -80)
                                             //                                                .padding(.bottom, -80)
                                                 .padding(.top, 20)
+                                        }
+                                        .alert("I choose you \(pokemon.name.capitalized)!", isPresented: $showDialogState) {
+                                            
+                                            Button("Print") {
+                                                print("COUNT: \(favoritePokemons.myList.count)")
+                                            }
+                                            Button("Add to Pokedex") {
+                                                
+                                                favoritePokemons.myList.append(pokemon)
+                                                
+                                            }
+                                            
+                                            Button("Cancel", role: .cancel) {}
+                                            
+                                            
+                                            
                                         }
                                         
                                         
