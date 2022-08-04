@@ -36,16 +36,21 @@ struct PokedexView: View {
                 Text(status)
                     .padding(.vertical, 15)
                     .navigationTitle("Doroke's Pokedex")
-                    .navigationBarItems(leading:
-                                            NavigationLink(
-                                                destination: Test(),
-                                                label: { Image(systemName: "person.crop.circle").imageScale(.large) }
-                                            ), trailing: Button(action: {
-                                                print("Reload button pressed...")
-                                            }) {
-                                                Text("Author")
-                                            }
-                    )
+                    .navigationBarItems(leading: Text("Favorite list"),
+                                        trailing: NavigationLink(
+                                            destination: Test(),
+                                            label: { Image(systemName: "person.crop.circle").imageScale(.large) }
+                                        ))
+//                    .navigationBarItems(leading:
+//                                            NavigationLink(
+//                                                destination: Test(),
+//                                                label: { Image(systemName: "person.crop.circle").imageScale(.large) }
+//                                            ), trailing: Button(action: {
+//                                                print("Reload button pressed...")
+//                                            }) {
+//                                                Text("Author")
+//                                            }
+//                    )
             }
             .searchable(text: $searchText)
             .padding(10)

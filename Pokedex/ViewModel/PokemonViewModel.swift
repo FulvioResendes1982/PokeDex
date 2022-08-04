@@ -56,6 +56,10 @@ class PokemonViewModel: ObservableObject {
             return .systemGray2
         case "electric":
             return .systemYellow
+        case "rock":
+            return .systemGray
+        case "fighting":
+            return .systemBrown
         default:
             return .systemIndigo
         }

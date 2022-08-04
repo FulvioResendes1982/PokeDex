@@ -50,22 +50,45 @@ struct PokemonView: View {
                                                                                 .ignoresSafeArea()
 
                             VStack {
-                            
-                        HStack {
-                            
-                            Spacer()
-                        
-                        //                    Image("1")
-                        KFImage(URL(string: pokemon.imageUrl))
-                            .resizable()
-                            .scaledToFit()
-                            .frame(width: 200, height: 200)
-                            .padding([.bottom, .trailing], 10)
-//                                                .offset(y: -80)
-//                                                .padding(.bottom, -80)
-                            .padding(.top, 20)
-                            
-                         Spacer()
+                                
+                                HStack {
+                                    
+                                    Spacer()
+                                    
+                                    
+                                    //                    Image("1")
+                                    
+                                    // TODO: IMPLEMENT SHADOW EFFECT
+                                    ZStack {
+                                        //                                Circle()
+                                        
+                                        Ellipse()
+                                            .fill(Color.black)
+                                            .frame(width: 190, height: 30)
+                                            .offset(y: 100)
+                                            .opacity(0.1)
+                                        //
+                                        //                                Image("pokeball")
+                                        //                                    .resizable()
+                                        //                                    .frame(width: 200, height: 200)
+                                        
+                                        Button(action: {}) {
+                                            KFImage(URL(string: pokemon.imageUrl))
+                                                .resizable()
+                                                .scaledToFit()
+                                                .frame(width: 200, height: 200)
+                                                .padding([.bottom, .trailing], 10)
+                                            //                                                .offset(y: -80)
+                                            //                                                .padding(.bottom, -80)
+                                                .padding(.top, 20)
+                                        }
+                                        
+                                        
+                                    }
+                                    .padding(.top, 10)
+                                    
+                                    
+                                    Spacer()
                             
                         }
                         
