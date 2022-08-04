@@ -31,9 +31,6 @@ struct FavoriteListView: View {
                                 Text(pokemon.name.capitalized)
                                 
                                 
-                                
-                                
-                                
                                 Spacer()
                                 
                                 KFImage(URL(string: pokemon.imageUrl))

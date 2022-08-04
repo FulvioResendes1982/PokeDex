@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-class FavoritePokemon: ObservableObject {
-//    var id = UUID()
-    @Published var myList = [Pokemon]()
-}
 
 struct PokedexView: View {
     private let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
@@ -45,22 +41,28 @@ struct PokedexView: View {
                     .navigationTitle("Doroke's Pokedex")
                     .navigationBarItems(leading: NavigationLink(
                         destination: FavoriteListView(favoritePokemons: favoritePokemons),
-                        label: { Text("Favorite list") }
+//                        label: { Image(systemName: "heart.fill").imageScale(.large).foregroundColor(.red) }
+                        label: { Image("pokeball")
+                                .resizable()
+                                .frame(width: 25, height: 25)
+                                
+                                
+                        }
                     ),
                                         trailing: NavigationLink(
                                             destination: Test(),
                                             label: { Image(systemName: "person.crop.circle").imageScale(.large) }
                                         ))
-//                    .navigationBarItems(leading:
-//                                            NavigationLink(
-//                                                destination: Test(),
-//                                                label: { Image(systemName: "person.crop.circle").imageScale(.large) }
-//                                            ), trailing: Button(action: {
-//                                                print("Reload button pressed...")
-//                                            }) {
-//                                                Text("Author")
-//                                            }
-//                    )
+                //                    .navigationBarItems(leading:
+                //                                            NavigationLink(
+                //                                                destination: Test(),
+                //                                                label: { Image(systemName: "person.crop.circle").imageScale(.large) }
+                //                                            ), trailing: Button(action: {
+                //                                                print("Reload button pressed...")
+                //                                            }) {
+                //                                                Text("Author")
+                //                                            }
+                //                    )
             }
             .searchable(text: $searchText)
             .padding(10)
@@ -89,7 +91,7 @@ struct PokedexView: View {
                 filteredList.append(pokemon)
             } else if "\(pokemon.id)" == searchText {
                 filteredList.append(pokemon)
-            } else if "\(pokemon.type)" == searchText {
+            } else if "\(pokemon.type)" == searchText.lowercased() {
                 filteredList.append(pokemon)
             }
         }
