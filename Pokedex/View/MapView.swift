@@ -30,7 +30,7 @@ struct MapView: View {
     
 //    @State var showDescription = false
     
-    @State var randomCities = [
+    @State var randomCities: [City] = [
         cities.randomElement()!,
         cities.randomElement()!,
         cities.randomElement()!,
