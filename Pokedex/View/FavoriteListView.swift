@@ -10,7 +10,7 @@ import Kingfisher
 
 struct FavoriteListView: View {
 //    @ObservedObject var favoritePokemons = FavoritePokemon()
-    var favoritePokemons: FavoritePokemon
+    @ObservedObject var favoritePokemons: FavoritePokemon
     var viewModel: PokemonViewModel
     
     
