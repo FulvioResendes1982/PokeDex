@@ -29,7 +29,7 @@ struct PokemonCard: View {
                         .padding(.top, 10)
                         .padding(.leading)
                     
-                    Text("#\(pokemon.id)")
+                    Text(formattedId)
                         .font(.subheadline)
                         .foregroundColor(.white)
                         .padding(.top, 10)
@@ -59,6 +59,16 @@ struct PokemonCard: View {
         .background(backgroundColor)
         .cornerRadius(12)
         .shadow(color: backgroundColor, radius: 4, x: 1.0, y: 1.0)
+    }
+    
+    var formattedId: String {
+        if pokemon.id / 10 < 1 {
+            return "#00\(pokemon.id)"
+        } else if pokemon.id / 10 < 10 {
+            return "#0\(pokemon.id)"
+        } else {
+            return "#\(pokemon.id)"
+        }
     }
 }
 

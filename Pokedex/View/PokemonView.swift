@@ -14,8 +14,8 @@ struct PokemonView: View {
     let pokemon: Pokemon
     
     @State var favoritePokemons: FavoritePokemon
-//    var value = 350
-//    let color: Color = .blue
+    var value = 350
+    let color: Color = .blue
     
     let backgroundColor: Color
     
@@ -77,7 +77,24 @@ struct PokemonView: View {
                             
                             
                             ZStack {
-                                //                                Circle()
+                                
+                                Text(formattedId)
+//                                    .font(.subheadline).bold()
+//                                    .foregroundColor(.white)
+//                                    .padding(.init(top: 8, leading: 24, bottom: 8, trailing: 24))
+//                                    .background(Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type)))
+//                                    .cornerRadius(20)
+////                                    .padding(.top, -12)
+                                    .font(.headline).bold()
+                                    .foregroundColor(.white)
+//                                    .padding(.horizontal, 16)
+//                                    .padding(.vertical, 8)
+//                                    .overlay(
+//                                        RoundedRectangle(cornerRadius: 20)
+//                                            .fill(Color.white.opacity(0.25))
+//                                    )
+//                                    .frame(width: 100, height: 24)
+                                    .offset(x: 160, y: -100)
                                 
                                 if (isInFavoriteList) {
                                     Image("spinningball")
@@ -87,7 +104,7 @@ struct PokemonView: View {
                                         .foregroundColor(.red)
                                     //                                                .offset(x: -70, y: -60)
                                         .rotationEffect(Angle(degrees: self.isAnimating ? 360.0 : 0.0))
-                                        .animation(   self.foreverAnimation)
+                                        .animation(self.foreverAnimation)
                                         .onAppear {
                                             self.isAnimating = true
                                         }.onDisappear {
@@ -101,7 +118,7 @@ struct PokemonView: View {
                                     Ellipse()
                                         .fill(Color.black)
                                         .frame(width: 190, height: 30)
-                                        .offset(y: 110)
+                                        .offset(y: 105)
                                         .opacity(0.1)
                                 }
                                     
@@ -130,7 +147,7 @@ struct PokemonView: View {
                                 .alert(dialogTitle, isPresented: $showDialogState) {
                                     
                                     if isInFavoriteList {
-                                        Button("Remove from Pokedex") {
+                                        Button("Remove from my Favorite List") {
                                             
                                             
                                             if let index = favoritePokemons.myList.firstIndex(where: { $0.name == pokemon.name }) {
@@ -141,7 +158,7 @@ struct PokemonView: View {
                                         }
                                         
                                     } else {
-                                        Button("Add to Pokedex") {
+                                        Button("Add to my Favorite List") {
                                             
                                             // can only add max 6 pokemon
                                             if favoritePokemons.myList.count < 6 && !isInFavoriteList {
@@ -179,31 +196,92 @@ struct PokemonView: View {
                         //                                    .offset(y: -100)
                         //                                    .padding(.bottom, -100)
                         
-                        
-                        
-                        Text(pokemon.name.capitalized)
-                            .font(.system(size: 32))
-                            .bold()
+                        VStack {
                             
-                        
-                        Text(pokemon.description)
-                        
-                        Text("\(pokemon.height)")
-                        Text("\(pokemon.weight)")
-                        Text("\(pokemon.defense)")
-                        
-                        Group {
-                            Text("Haha")
+                            
+                            
+                            Text(pokemon.name.capitalized)
+                                .font(.largeTitle)
+                            
+                            //                            HStack {
+                            
+                            //                                Text("#\(pokemon.id)")
+                            //                                    .font(.subheadline).bold()
+                            //                                    .foregroundColor(.white)
+                            //                                    .padding(.init(top: 8, leading: 24, bottom: 8, trailing: 24))
+                            //                                    .background(Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type)))
+                            //                                    .cornerRadius(20)
+                            //                                    .padding(.top, -12)
+                            
+                            Text(pokemon.type.capitalized)
+                                .font(.subheadline).bold()
+                                .foregroundColor(.white)
+                                .padding(.init(top: 8, leading: 24, bottom: 8, trailing: 24))
+                                .background(Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type)))
+                                .cornerRadius(20)
+                                .padding(.top, -12)
+                            //                            }
+                            
+                            HStack {
+                                Text("Description")
+                                    .font(.system(size: 18, weight: .semibold))
+//                                    .font(.system())
+                                    .padding(.bottom, 8)
+                                
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                            
                             Text(pokemon.description)
-                            Text(pokemon.description)
-                            Text(pokemon.description)
-                            Text(pokemon.description)
-                            Text(pokemon.description)
-                            Text(pokemon.description)
-                            Text(pokemon.description)
-                            Text(pokemon.description)
+//                                .padding(.top, 12)
+                            
+                            HStack {
+                                Text("Stats")
+                                    .font(.system(size: 18, weight: .semibold))
+//                                    .font(.system())
+                                    .padding(.bottom, 8)
+                                
+                                Spacer()
+                            }
+                            .padding(.top, 10)
+                            
+                            // TODO: BARCHARTVIEW
+                            ZStack(alignment: .leading) {
+                                Capsule()
+                                    .frame(width: 180, height: 20).animation(.default)
+                                    .foregroundColor(Color(.systemGray5))
+                                
+                                Capsule()
+                                    .frame(width: CGFloat(120), height: 20).animation(.default)
+                                    .foregroundColor(color)
+                            }
+                            
+                            ZStack(alignment: .leading) {
+                                Capsule()
+                                    .frame(width: 180, height: 20).animation(.default)
+                                    .foregroundColor(Color(.systemGray5))
+                                
+                                Capsule()
+                                    .frame(width: CGFloat(170), height: 20).animation(.default)
+                                    .foregroundColor(.red)
+                            }
+                            
+                            ZStack(alignment: .leading) {
+                                Capsule()
+                                    .frame(width: 180, height: 20).animation(.default)
+                                    .foregroundColor(Color(.systemGray5))
+                                
+                                Capsule()
+                                    .frame(width: CGFloat(30), height: 20).animation(.default)
+                                    .foregroundColor(.pink)
+                            }
                             
                         }
+                        .padding(.horizontal, 20)
+                        .padding(.bottom, 50)
+                        
+                            
+                        
                         
                         //                    HStack { Spacer() }
                     }
@@ -250,16 +328,28 @@ struct PokemonView: View {
         //
         //        }
         //        .padding(10)
+        
+        
     }
     
     var dialogTitle: String {
-        
         if !isInFavoriteList {
             return "I choose you \(pokemon.name.capitalized)!"
         } else {
             return "Goodbye \(pokemon.name.capitalized) :("
         }
     }
+    
+    var formattedId: String {
+        if pokemon.id / 10 < 1 {
+            return "#00\(pokemon.id)"
+        } else if pokemon.id / 10 < 10 {
+            return "#0\(pokemon.id)"
+        } else {
+            return "#\(pokemon.id)"
+        }
+    }
+    
     
     
 }

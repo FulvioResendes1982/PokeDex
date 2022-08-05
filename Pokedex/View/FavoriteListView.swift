@@ -13,6 +13,7 @@ struct FavoriteListView: View {
     @ObservedObject var favoritePokemons: FavoritePokemon
     var viewModel: PokemonViewModel
     
+//    @State var counter = 1
     
     var body: some View {
 //        NavigationView {
@@ -45,6 +46,9 @@ struct FavoriteListView: View {
                                 HStack {
                                     
                                     Text("#\(pokemon.id)")
+//                                    counter+=1
+                                    
+//                                    Text(formattedId)
                                     
                                     Text(pokemon.name.capitalized)
                                     
@@ -84,13 +88,23 @@ struct FavoriteListView: View {
                     }
                     .onDelete(perform: delete)
                 }
-//                .navigationTitle("")
-                .navigationBarHidden(true)
+                .navigationTitle("Favorite Pokemons")
+//                .navigationBarHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
             }
             Text("\(favoritePokemons.myList.count)/6 pokemons")
         }
     }
+    
+//    var formattedId: String {
+//        if pokemon.id / 10 < 1 {
+//            return "#00\(pokemon.id)"
+//        } else if pokemon.id / 10 < 10 {
+//            return "#0\(pokemon.id)"
+//        } else {
+//            return "#\(pokemon.id)"
+//        }
+//    }
     
     func delete(at offsets: IndexSet) {
         favoritePokemons.myList.remove(atOffsets: offsets)
