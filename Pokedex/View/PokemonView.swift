@@ -147,7 +147,7 @@ struct PokemonView: View {
                                 .alert(dialogTitle, isPresented: $showDialogState) {
                                     
                                     if isInFavoriteList {
-                                        Button("Remove from my Favorite List") {
+                                        Button("Remove from my favorite list") {
                                             
                                             
                                             if let index = favoritePokemons.myList.firstIndex(where: { $0.name == pokemon.name }) {
@@ -158,7 +158,7 @@ struct PokemonView: View {
                                         }
                                         
                                     } else {
-                                        Button("Add to my Favorite List") {
+                                        Button("Add to my favorite list") {
                                             
                                             // can only add max 6 pokemon
                                             if favoritePokemons.myList.count < 6 && !isInFavoriteList {
@@ -222,7 +222,7 @@ struct PokemonView: View {
                                 .padding(.top, -12)
                             //                            }
                             
-                            HStack {
+                            HStack() {
                                 Text("Description")
                                     .font(.system(size: 18, weight: .semibold))
 //                                    .font(.system())
@@ -232,8 +232,12 @@ struct PokemonView: View {
                             }
                             .padding(.top, 10)
                             
-                            Text(pokemon.description)
-//                                .padding(.top, 12)
+                            Text(formattedDescription)
+//                                .padding()
+//                                .background(.white)
+//                                .cornerRadius(16)
+//                                .shadow(color: .gray, radius: 6, x: 0.0, y: 0.0)
+                                .padding(0)
                             
                             HStack {
                                 Text("Stats")
@@ -246,36 +250,43 @@ struct PokemonView: View {
                             .padding(.top, 10)
                             
                             // TODO: BARCHARTVIEW
-                            ZStack(alignment: .leading) {
-                                Capsule()
-                                    .frame(width: 180, height: 20).animation(.default)
-                                    .foregroundColor(Color(.systemGray5))
-                                
-                                Capsule()
-                                    .frame(width: CGFloat(120), height: 20).animation(.default)
-                                    .foregroundColor(color)
-                            }
+//                            ZStack(alignment: .leading) {
+//                                Capsule()
+//                                    .frame(width: 180, height: 20).animation(.default)
+//                                    .foregroundColor(Color(.systemGray5))
+//
+//                                Capsule()
+//                                    .frame(width: CGFloat(120), height: 20).animation(.default)
+//                                    .foregroundColor(color)
+//                            }
+//
+//                            ZStack(alignment: .leading) {
+//                                Capsule()
+//                                    .frame(width: 180, height: 20).animation(.default)
+//                                    .foregroundColor(Color(.systemGray5))
+//
+//                                Capsule()
+//                                    .frame(width: CGFloat(170), height: 20).animation(.default)
+//                                    .foregroundColor(.red)
+//                            }
+//
+//                            ZStack(alignment: .leading) {
+//                                Capsule()
+//                                    .frame(width: 180, height: 20).animation(.default)
+//                                    .foregroundColor(Color(.systemGray5))
+//
+//                                Capsule()
+//                                    .frame(width: CGFloat(30), height: 20).animation(.default)
+//                                    .foregroundColor(.pink)
+//                            }
                             
-                            ZStack(alignment: .leading) {
-                                Capsule()
-                                    .frame(width: 180, height: 20).animation(.default)
-                                    .foregroundColor(Color(.systemGray5))
-                                
-                                Capsule()
-                                    .frame(width: CGFloat(170), height: 20).animation(.default)
-                                    .foregroundColor(.red)
-                            }
+                            StatsViews(pokemon: pokemon)
                             
-                            ZStack(alignment: .leading) {
-                                Capsule()
-                                    .frame(width: 180, height: 20).animation(.default)
-                                    .foregroundColor(Color(.systemGray5))
-                                
-                                Capsule()
-                                    .frame(width: CGFloat(30), height: 20).animation(.default)
-                                    .foregroundColor(.pink)
-                            }
-                            
+//                            List {
+//                                ForEach(pokemon.evolutionChain) { pokemon in
+//                                    Text(pokemon.name)
+//                                }
+//                            }
                         }
                         .padding(.horizontal, 20)
                         .padding(.bottom, 50)
@@ -350,12 +361,98 @@ struct PokemonView: View {
         }
     }
     
+    var formattedDescription: String {
+        var description = ""
+        for char in pokemon.description {
+            if char != "\n" || char != "\0" {
+                description += String(char)
+            }
+        }
+        return description
+    }
+    
     
     
 }
 
 //struct PokemonView_Previews: PreviewProvider {
 //    static var previews: some View {
-////        PokemonView(pokemon: MOCK_POKEMON[0])
+//        PokemonView(pokemon: MOCK_POKEMON[0])
 //    }
 //}
+
+struct StatsViews: View {
+    let pokemon: Pokemon
+    
+
+    var body: some View {
+        VStack {
+            HStack(alignment: .center) {
+                VStack(alignment: .leading) {
+                    Text("Height")
+                        .font(.system(size: 15))
+                        .foregroundColor(.gray)
+                        .bold()
+                        .padding(.bottom, 2)
+                    
+                    
+                    Text("\(heightToString)")
+                    
+                        .bold()
+                    
+                }
+                .padding(.vertical, 25)
+                .padding(.leading, 20)
+                
+                Spacer()
+                
+                VStack(alignment: .leading) {
+                    Text("Weight")
+                        .font(.system(size: 15))
+                        .foregroundColor(.gray)
+                        .bold()
+                        .padding(.bottom, 2)
+                    
+                    Text("\(weightToString)")
+                        .bold()
+                    
+                }
+//                .padding()
+                
+                .padding(.horizontal, 20)
+                .padding(.vertical, 25)
+            }
+            
+            .background(.white)
+            .cornerRadius(16)
+            .shadow(color: .gray, radius: 5, x: 0.0, y: 1.0)
+            
+            
+            
+            
+            HStack {
+                
+            }
+            
+            HStack {
+//                Text("Bars...")
+            }
+        }
+
+        
+        
+    }
+    
+    var heightToString: String {
+        let m = (Double(pokemon.height) / 10.0)
+        let ft = m * 3.281
+        return String(format: "%.2f m (%.2f ft)", m, ft)
+    }
+    
+    
+    var weightToString: String {
+        let kg = (Double(pokemon.weight) / 10.0)
+        let lbs = kg * 2.205
+        return String(format: "%.2f kg (%.2f lbs)", kg, lbs)
+    }
+}

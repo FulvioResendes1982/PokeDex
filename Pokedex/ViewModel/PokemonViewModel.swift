@@ -69,7 +69,7 @@ class PokemonViewModel: ObservableObject {
 extension Data {
     func parseData(removeString string: String) -> Data? {
         let dataString = String(data: self, encoding: .utf8)
-        let parsedDataString = dataString?.replacingOccurrences(of: string, with: "")
+        let parsedDataString = dataString?.replacingOccurrences(of: string, with: "").replacingOccurrences(of: "\n", with: " ")
         guard let data = parsedDataString?.data(using: String.Encoding.utf8) else { return nil }
         return data
     }
