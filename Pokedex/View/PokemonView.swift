@@ -239,15 +239,7 @@ struct PokemonView: View {
 //                                .shadow(color: .gray, radius: 6, x: 0.0, y: 0.0)
                                 .padding(0)
                             
-                            HStack {
-                                Text("Stats")
-                                    .font(.system(size: 18, weight: .semibold))
-//                                    .font(.system())
-                                    .padding(.bottom, 8)
-                                
-                                Spacer()
-                            }
-                            .padding(.top, 10)
+                            
                             
                             // TODO: BARCHARTVIEW
 //                            ZStack(alignment: .leading) {
@@ -386,6 +378,16 @@ struct StatsViews: View {
     
 
     var body: some View {
+        HStack {
+            Text("Stats")
+                .font(.system(size: 18, weight: .semibold))
+//                                    .font(.system())
+                .padding(.bottom, 8)
+            
+            Spacer()
+        }
+        .padding(.top, 10)
+        
         VStack {
             HStack(alignment: .center) {
                 VStack(alignment: .leading) {
@@ -417,7 +419,7 @@ struct StatsViews: View {
                         .bold()
                     
                 }
-//                .padding()
+                //                .padding()
                 
                 .padding(.horizontal, 20)
                 .padding(.vertical, 25)
@@ -428,17 +430,18 @@ struct StatsViews: View {
             .shadow(color: .gray, radius: 5, x: 0.0, y: 1.0)
             
             
+            // attack
+            
+                BarChartView(pokemon: pokemon, attribute: "attack")
             
             
-            HStack {
-                
-            }
+            // defense
             
-            HStack {
-//                Text("Bars...")
-            }
+                //                Text("Bars...")
+            BarChartView(pokemon: pokemon, attribute: "defense")
+            
         }
-
+        
         
         
     }
@@ -454,5 +457,56 @@ struct StatsViews: View {
         let kg = (Double(pokemon.weight) / 10.0)
         let lbs = kg * 2.205
         return String(format: "%.2f kg (%.2f lbs)", kg, lbs)
+    }
+}
+
+struct BarChartView: View {
+    let pokemon: Pokemon
+    let attribute: String
+    
+    let capsuleWidth = CGFloat(200)
+    let capsuleHeight = CGFloat(10)
+    
+    var body: some View {
+        HStack {
+            Text(attribute.capitalized)
+            
+            Text("\(value)")
+            
+            ZStack(alignment: .leading) {
+                Capsule()
+                    .frame(width: capsuleWidth, height: capsuleHeight)
+                    .foregroundColor(Color(.systemGray5))
+                
+                Capsule()
+                    .frame(width: barChartValue, height: capsuleHeight) //.animation(.default)
+                    .foregroundColor(attribute == "attack" ? .red : .blue)
+            }
+        }
+    }
+    
+    var value: String {
+        var val: Int
+        
+        if attribute == "attack" {
+            val = pokemon.attack
+        } else if attribute == "defense" {
+            val = pokemon.defense
+        } else {
+            val = 0
+        }
+        
+        return "\(val)"
+    }
+    
+    var barChartValue: CGFloat {
+        let MAX_VALUE = 120.0
+        
+        var val = Double(value)!
+        if val > 120 {
+            val = 120
+        }
+        
+        return CGFloat(val / MAX_VALUE * capsuleWidth)
     }
 }
