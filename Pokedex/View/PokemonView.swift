@@ -104,13 +104,14 @@ struct PokemonView: View {
                                         .foregroundColor(.red)
                                     //                                                .offset(x: -70, y: -60)
                                         .rotationEffect(Angle(degrees: self.isAnimating ? 360.0 : 0.0))
-                                        .animation(self.foreverAnimation)
+                                        .animation(self.foreverAnimation, value: self.isAnimating)
                                         .onAppear {
                                             self.isAnimating = true
                                         }.onDisappear {
                                             self.isAnimating = false
                                         }
                                         .padding(.top, 20)
+                                        
                                     
                                     
                                 } else {
@@ -463,8 +464,10 @@ struct BarChartView: View {
     let pokemon: Pokemon
     let attribute: String
     
-    let capsuleWidth = CGFloat(200)
+    let capsuleWidth = CGFloat(180)
     let capsuleHeight = CGFloat(10)
+    
+    @State  private var offset: CGFloat = 0
     
     var body: some View {
         HStack {
@@ -476,7 +479,7 @@ struct BarChartView: View {
                 
                 
             
-                Spacer()
+//                Spacer()
             
             Text("\(value)")
                 .bold()
@@ -490,8 +493,23 @@ struct BarChartView: View {
                     .foregroundColor(Color(.systemGray5))
                 
                 Capsule()
-                    .frame(width: barChartValue, height: capsuleHeight) //.animation(.default)
+//                    .frame(width: barChartValue, height: capsuleHeight) //.animation(.default)
+                 .frame(width: offset, height: capsuleHeight) //.animation(.default)
                     .foregroundColor(attribute == "attack" ? .red : .blue)
+                    .scaleEffect(x: barChartValue / capsuleWidth, anchor: .leading)
+                    .onAppear {
+                        offset = barChartValue
+                    }
+                    .animation(.easeInOut(duration: 1.0).delay(1), value: self.offset)
+                    
+//                    .onTapGesture {
+//                        offset += 20
+//                    }
+//                    .animation(Animation.easeInOut(duration: 5.0)
+//                        .repeatForever(autoreverses: false), value: barChartValue)
+//                    .onAppear {
+//                        offset = 0
+//                    }
                     
             }
         }
