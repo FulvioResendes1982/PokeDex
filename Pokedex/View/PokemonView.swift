@@ -94,7 +94,7 @@ struct PokemonView: View {
 //                                            .fill(Color.white.opacity(0.25))
 //                                    )
 //                                    .frame(width: 100, height: 24)
-                                    .offset(x: 160, y: -100)
+                                    .offset(x: 150, y: -100)
                                 
                                 if (isInFavoriteList) {
                                     Image("spinningball")
@@ -430,15 +430,13 @@ struct StatsViews: View {
             .shadow(color: .gray, radius: 5, x: 0.0, y: 1.0)
             
             
-            // attack
-            
+
+            VStack(alignment: .leading) {
                 BarChartView(pokemon: pokemon, attribute: "attack")
+                BarChartView(pokemon: pokemon, attribute: "defense")
+            }
+            .padding(20)
             
-            
-            // defense
-            
-                //                Text("Bars...")
-            BarChartView(pokemon: pokemon, attribute: "defense")
             
         }
         
@@ -460,6 +458,7 @@ struct StatsViews: View {
     }
 }
 
+
 struct BarChartView: View {
     let pokemon: Pokemon
     let attribute: String
@@ -470,8 +469,20 @@ struct BarChartView: View {
     var body: some View {
         HStack {
             Text(attribute.capitalized)
+                .bold()
+                .frame(width: 70)
+                .padding(.trailing, 10)
+                .foregroundColor(Color(.systemGray))
+                
+                
+            
+                Spacer()
             
             Text("\(value)")
+                .bold()
+                .padding(.trailing, 10)
+            
+            
             
             ZStack(alignment: .leading) {
                 Capsule()
@@ -481,6 +492,7 @@ struct BarChartView: View {
                 Capsule()
                     .frame(width: barChartValue, height: capsuleHeight) //.animation(.default)
                     .foregroundColor(attribute == "attack" ? .red : .blue)
+                    
             }
         }
     }

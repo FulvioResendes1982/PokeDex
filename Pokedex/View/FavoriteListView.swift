@@ -29,6 +29,7 @@ struct FavoriteListView: View {
                     .padding()
 //                    .frame(maxWidth: .infinity, alignment: .center)
                     .multilineTextAlignment(.center)
+                    .offset(y: -50)
 //                Spacer()
             }
             
