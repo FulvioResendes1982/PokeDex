@@ -58,7 +58,7 @@ struct TrainerView: View {
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color(.white),lineWidth: 4))
                             .offset(y: -110)
-                            .padding(.bottom, -100)
+                            .padding(.bottom, -110)
                             .onTapGesture {
                                 if let url = URL(string: info["facebook"]!) {
                                     UIApplication.shared.open(url)
@@ -123,14 +123,24 @@ struct TrainerView: View {
                     
                     VStack(alignment: .leading) {
                         
-                        Text("🚀 About")
+                        Text("👨‍💻 Author")
+                            .font(.headline)
+                            .bold()
+                            .padding(.bottom, 1)
+                        
+                        Text(info["author"]!)
+                            .lineLimit(nil)
+                            .frame(height: 210)
+                            .padding(.bottom, 12)
+                        
+                        Text("🚀 About this app")
                             .font(.headline)
                             .bold()
                             .padding(.bottom, 1)
                         
                         Text(info["about"]!)
                             .lineLimit(nil)
-                            .frame(height: 210)
+                            .frame(height: 140)
                             .padding(.bottom, 12)
                         
                         Text("🤔 \"Doroke?\"")
@@ -144,7 +154,7 @@ struct TrainerView: View {
                             .padding(.bottom, 12)
                             
                         
-                        Text("👨‍💻 Connecting")
+                        Text("🌟 Connecting")
                             .font(.headline)
                             .bold()
                             .padding(.bottom, 1)
@@ -264,7 +274,8 @@ struct TrainerView: View {
 //}
 
 var info = [
-    "about": "Hi my name is Hoang, some might know me as Brian. This is my very first iOS app I ever made, and I'm already lovin' iOS development 😍. I chose Pokedex as Pokemon was my best childhood game. I remember I would wake up at 6am to train some of my Pokemons before school when I was in elementary. I hope this app also brings back some good memory if you happen to be a Pokemon fan like me.",
+    "author": "Hi my name is Hoang, some might know me as Brian. This is my very first iOS app I ever made, and I'm already lovin' iOS development 😍. I chose Pokedex as Pokemon was my best childhood game. I remember I would wake up at 6am to train some of my Pokemons before school when I was in elementary. I hope this app also brings back some good memory if you happen to be a Pokemon fan like me.",
+    "about": "This is a full-fledged Pokedex app, built with Swift 5.1 and SwiftUI 3 and targeted at iOS > 15.5. It has all the core functionalities search as search by name, ID or type. You can also add Pokemons to your Favorite List, up to 6 of them (following the original gameplay).",
     "doroke": "\"Doroke\" (or 「ドロケ」) is my IGN (In Game Name) for most of the games I play.",
     "github": "https://github.com/hoangdesu/Pokemon-iOS",
     "website": "https://hoangdesu.com/",
