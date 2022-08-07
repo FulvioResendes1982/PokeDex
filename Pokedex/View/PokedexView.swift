@@ -15,6 +15,8 @@ struct PokedexView: View {
     
     @ObservedObject var favoritePokemons = FavoritePokemon()
     
+    @State public var trainer = "Doroke"
+    
     
     var body: some View {
         NavigationView {
@@ -38,20 +40,24 @@ struct PokedexView: View {
                 }
                 Text(status)
                     .padding(.vertical, 15)
-                    .navigationTitle("Doroke's Pokedex")
+                    .navigationTitle("\(trainer)'s Pokedex")
                     .navigationBarItems(leading: NavigationLink(
                         destination: FavoriteListView(favoritePokemons: favoritePokemons, viewModel: viewModel),
 //                        label: { Image(systemName: "heart.fill").imageScale(.large).foregroundColor(.red) }
                         label: { Image("pokeball")
                                 .resizable()
-                                .frame(width: 25, height: 25)
+                                .frame(width: 30, height: 30)
                                 
                                 
                         }
                     ),
                                         trailing: NavigationLink(
-                                            destination: Test(),
-                                            label: { Image(systemName: "person.crop.circle").imageScale(.large) }
+                                            destination: TrainerView(trainer: $trainer),
+//                                            label: { Image(systemName: "person.crop.circle").imageScale(.large) }
+                                            label: { Image("user")
+                                                    .resizable()
+                                                    .frame(width: 32, height: 32)
+                                            }
                                         ))
                 //                    .navigationBarItems(leading:
                 //                                            NavigationLink(

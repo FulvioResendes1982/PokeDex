@@ -56,7 +56,7 @@ struct MapView: View {
                     .frame(width: 30, height: 30)
                     .onTapGesture {
 //                        self.showDescription.toggle()
-                        print(randomCities)
+                        print("Hello")
                     }
                 
 //                if showDescription {
