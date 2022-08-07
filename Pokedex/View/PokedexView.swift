@@ -62,7 +62,6 @@ struct PokedexView: View {
                                     .frame(width: 32, height: 32)
                             })
                     )
-                
             }
             .searchable(text: $searchText)
             .padding(10)

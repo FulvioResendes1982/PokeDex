@@ -152,6 +152,7 @@
 		297FE58E2895AFC1008EC267 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				291FD4F0289C6720006FFB5B /* City.swift */,
 				297FE5992895BDE9008EC267 /* Pokemon.swift */,
 			);
 			path = Model;
@@ -175,7 +176,6 @@
 			children = (
 				292998C5289917B6006C7131 /* PokemonViewModel.swift */,
 				291FD4EE289C4E9E006FFB5B /* FavoritePokemon.swift */,
-				291FD4F0289C6720006FFB5B /* City.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";

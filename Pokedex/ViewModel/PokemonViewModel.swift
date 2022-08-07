@@ -76,7 +76,7 @@ class PokemonViewModel: ObservableObject {
         case "rock":
             return .systemGray
         case "fighting":
-            return .systemBrown
+            return .systemRed
         default:
             return .systemIndigo
         }

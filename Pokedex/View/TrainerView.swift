@@ -46,7 +46,7 @@ struct TrainerView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 190)
                             .clipShape(Circle())
-                            .overlay(Circle().stroke(Color(.white),lineWidth: 4))
+                            .overlay(Circle().stroke(Color(.systemGray6),lineWidth: 4))
                             .offset(y: -110)
                             .padding(.bottom, -110)
                             .onTapGesture {
