@@ -295,7 +295,7 @@ struct BarChartView: View {
             
             Text("\(value)")
                 .bold()
-                .padding(.trailing, 10)
+                .frame(width: 30)
             
             ZStack(alignment: .leading) {
                 Capsule()
