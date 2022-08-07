@@ -41,8 +41,8 @@ struct TrainerView: View {
                             .frame(width: 190)
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color(.white),lineWidth: 4))
-                            .offset(y: -170)
-                            .padding(.bottom, -180)
+                            .offset(y: -120)
+                            .padding(.bottom, -130)
                             .onTapGesture {
                                 if let url = URL(string: info["facebook"]!) {
                                     UIApplication.shared.open(url)
@@ -92,7 +92,7 @@ struct TrainerView: View {
                             .padding(.init(top: 8, leading: 24, bottom: 8, trailing: 24))
                             .background(Color(.systemIndigo))
                             .cornerRadius(4)
-                            .padding(.top, -12)
+                            .padding(.top, -14)
                             .multilineTextAlignment(.center)
                         
                         Button(action: {

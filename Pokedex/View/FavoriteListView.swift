@@ -107,9 +107,16 @@ struct FavoriteListView: View {
 //        }
 //    }
     
+    // ACKNOWLEDGED BUG: Deleting the last pokemon form the FavoriteViewList will crash the program, even checking with if
     func delete(at offsets: IndexSet) {
-        favoritePokemons.myList.remove(atOffsets: offsets)
+        if favoritePokemons.myList.count > 0 {
+            favoritePokemons.myList.remove(atOffsets: offsets)
+        } else {
+            return
         }
+    }
+        
+
 }
 
 //struct FavoriteListView_Previews: PreviewProvider {
