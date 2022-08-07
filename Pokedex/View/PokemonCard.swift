@@ -6,20 +6,20 @@
 //
 
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 1
-  Project name: Pokedex
-  Author: Nguyen Quoc Hoang
-  ID: s3697305
-  Created date: 31/07/2022
-  Last modified: 07/08/2022
-  Acknowledgement:
-    - Foundation: https://github.com/TomHuynhSG/SSETContactList
-    - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
-    - Apple Developer: https://developer.apple.com/
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 1
+ Project name: Pokedex
+ Author: Nguyen Quoc Hoang
+ ID: s3697305
+ Created date: 31/07/2022
+ Last modified: 07/08/2022
+ Acknowledgement:
+ - Foundation: https://github.com/TomHuynhSG/SSETContactList
+ - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
+ - Apple Developer: https://developer.apple.com/
+ */
 
 
 import SwiftUI
@@ -64,7 +64,7 @@ struct PokemonCard: View {
                                 .fill(Color.white.opacity(0.25))
                         )
                         .frame(width: 100, height: 24)
-
+                    
                     KFImage(URL(string: pokemon.imageUrl))
                         .resizable()
                         .scaledToFit()
@@ -86,11 +86,5 @@ struct PokemonCard: View {
         } else {
             return "#\(pokemon.id)"
         }
-    }
-}
-
-struct PokemonCard_Previews: PreviewProvider {
-    static var previews: some View {
-        PokemonCard(pokemon: MOCK_POKEMON[0], pokemonViewModel: PokemonViewModel())
     }
 }

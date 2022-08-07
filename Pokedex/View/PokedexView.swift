@@ -6,20 +6,20 @@
 //
 
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 1
-  Project name: Pokedex
-  Author: Nguyen Quoc Hoang
-  ID: s3697305
-  Created date: 31/07/2022
-  Last modified: 07/08/2022
-  Acknowledgement:
-    - Foundation: https://github.com/TomHuynhSG/SSETContactList
-    - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
-    - Apple Developer: https://developer.apple.com/
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 1
+ Project name: Pokedex
+ Author: Nguyen Quoc Hoang
+ ID: s3697305
+ Created date: 31/07/2022
+ Last modified: 07/08/2022
+ Acknowledgement:
+ - Foundation: https://github.com/TomHuynhSG/SSETContactList
+ - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
+ - Apple Developer: https://developer.apple.com/
+ */
 
 
 import SwiftUI
@@ -27,13 +27,12 @@ import SwiftUI
 
 struct PokedexView: View {
     private let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
-    @ObservedObject var viewModel = PokemonViewModel()
-    @State private var searchText: String = ""
     
+    @ObservedObject var viewModel = PokemonViewModel()
     @ObservedObject var favoritePokemons = FavoritePokemon()
     
+    @State private var searchText: String = ""
     @State public var trainer = "Doroke"
-    
     
     var body: some View {
         NavigationView {
@@ -44,48 +43,26 @@ struct PokedexView: View {
                             destination: PokemonView(pokemon: pokemon, pokemonViewModel: viewModel, favoritePokemons: favoritePokemons),
                             label: { PokemonCard(pokemon: pokemon, pokemonViewModel: viewModel) }
                         )
-                        
-                        // another way to write (pretty neat too)
-                        //                        NavigationLink {
-                        //                            PokemonView(pokemon: pokemon)
-                        //                        } label: {
-                        //                            PokemonCard(pokemon: pokemon, pokemonViewModel: viewModel)
-                        //                        }
                     }
-                    
-                    
                 }
+                
                 Text(status)
                     .padding(.vertical, 15)
                     .navigationTitle("\(trainer)'s Pokedex")
                     .navigationBarItems(leading: NavigationLink(
                         destination: FavoriteListView(favoritePokemons: favoritePokemons, viewModel: viewModel),
-//                        label: { Image(systemName: "heart.fill").imageScale(.large).foregroundColor(.red) }
                         label: { Image("pokeball")
                                 .resizable()
                                 .frame(width: 30, height: 30)
-                                
-                                
-                        }
-                    ),
-                                        trailing: NavigationLink(
-                                            destination: TrainerView(trainer: $trainer),
-//                                            label: { Image(systemName: "person.crop.circle").imageScale(.large) }
-                                            label: { Image("user")
-                                                    .resizable()
-                                                    .frame(width: 32, height: 32)
-                                            }
-                                        ))
-                //                    .navigationBarItems(leading:
-                //                                            NavigationLink(
-                //                                                destination: Test(),
-                //                                                label: { Image(systemName: "person.crop.circle").imageScale(.large) }
-                //                                            ), trailing: Button(action: {
-                //                                                print("Reload button pressed...")
-                //                                            }) {
-                //                                                Text("Author")
-                //                                            }
-                //                    )
+                            
+                        }), trailing: NavigationLink(
+                            destination: TrainerView(trainer: $trainer),
+                            label: { Image("user")
+                                    .resizable()
+                                    .frame(width: 32, height: 32)
+                            })
+                    )
+                
             }
             .searchable(text: $searchText)
             .padding(10)
@@ -120,10 +97,6 @@ struct PokedexView: View {
         }
         
         return searchText == "" ? viewModel.pokemons : filteredList
-
-//        return searchText == "" ? viewModel.pokemons : viewModel.pokemons.filter {
-//            $0.name.contains(searchText.lowercased())
-//        }
     }
 }
 

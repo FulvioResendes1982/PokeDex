@@ -6,26 +6,27 @@
 //
 
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 1
-  Project name: Pokedex
-  Author: Nguyen Quoc Hoang
-  ID: s3697305
-  Created date: 31/07/2022
-  Last modified: 07/08/2022
-  Acknowledgement:
-    - Foundation: https://github.com/TomHuynhSG/SSETContactList
-    - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
-    - Apple Developer: https://developer.apple.com/
-*/
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 1
+ Project name: Pokedex
+ Author: Nguyen Quoc Hoang
+ ID: s3697305
+ Created date: 31/07/2022
+ Last modified: 07/08/2022
+ Acknowledgement:
+ - Foundation: https://github.com/TomHuynhSG/SSETContactList
+ - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
+ - Apple Developer: https://developer.apple.com/
+ */
 
 import SwiftUI
 
 class PokemonViewModel: ObservableObject {
-    @Published var pokemons = [Pokemon]()
     let apiURL = "https://pokedex-bb36f.firebaseio.com/pokemon.json"
+    
+    @Published var pokemons = [Pokemon]()
     
     init() {
         fetchPokemons()
@@ -90,11 +91,3 @@ extension Data {
         return data
     }
 }
-
-// NOTES: @Published var in ObservableObject
-//- concept in declarative or reactive programming in SwiftUI
-//- this class stores the model, instance is created in PokedexView
-//- created instance is marked with @ObservedObject
-//- @Published variable: listen for changes
-//- pokemons list start out empty, gets populated with API call, trigger loop to run again and render UI
-//- Observable + Published vs Observed: talker and listener

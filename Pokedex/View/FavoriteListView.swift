@@ -6,70 +6,48 @@
 //
 
 /*
-  RMIT University Vietnam
-  Course: COSC2659 iOS Development
-  Semester: 2022B
-  Assessment: Assignment 1
-  Project name: Pokedex
-  Author: Nguyen Quoc Hoang
-  ID: s3697305
-  Created date: 31/07/2022
-  Last modified: 07/08/2022
-  Acknowledgement:
-    - Foundation: https://github.com/TomHuynhSG/SSETContactList
-    - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
-    - Apple Developer: https://developer.apple.com/
-*/
-
+ RMIT University Vietnam
+ Course: COSC2659 iOS Development
+ Semester: 2022B
+ Assessment: Assignment 1
+ Project name: Pokedex
+ Author: Nguyen Quoc Hoang
+ ID: s3697305
+ Created date: 31/07/2022
+ Last modified: 07/08/2022
+ Acknowledgement:
+ - Foundation: https://github.com/TomHuynhSG/SSETContactList
+ - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
+ - Apple Developer: https://developer.apple.com/
+ */
 
 import SwiftUI
 import Kingfisher
 
 struct FavoriteListView: View {
-//    @ObservedObject var favoritePokemons = FavoritePokemon()
     @ObservedObject var favoritePokemons: FavoritePokemon
     var viewModel: PokemonViewModel
     
-//    @State var counter = 1
-    
     var body: some View {
-//        NavigationView {
-//        List(favoritePokemons.myList) {
-//            pokemon in Text("\(pokemon.name) \(pokemon.id)")
-//        }
-//        .onDelete(perform: delete)
-//        }
         if (favoritePokemons.myList.count == 0) {
             VStack(alignment: .center) {
-//                Spacer()
                 Text("You haven't added any Pokemon into your favorite list")
                     .padding()
-//                    .frame(maxWidth: .infinity, alignment: .center)
                     .multilineTextAlignment(.center)
                     .offset(y: -50)
-//                Spacer()
             }
-            
-//            Spacer()
         }
         else {
-            
             NavigationView {
                 List {
                     ForEach(favoritePokemons.myList) { pokemon in
                         NavigationLink(
                             destination: PokemonView(pokemon: pokemon, pokemonViewModel: viewModel, favoritePokemons: favoritePokemons),
-                            //                                label: { PokemonCard(pokemon: pokemon, pokemonViewModel: viewModel) }
                             label: {
                                 HStack {
-                                    
                                     Text("#\(pokemon.id)")
-//                                    counter+=1
-                                    
-//                                    Text(formattedId)
                                     
                                     Text(pokemon.name.capitalized)
-                                    
                                     
                                     Spacer()
                                     
@@ -77,54 +55,21 @@ struct FavoriteListView: View {
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 80, height: 80)
-                                    //                                    .padding([.bottom, .trailing], 8)
-                                    
-                                    
                                 }
-                                //                                    .navigationBarTitle("")
-                                //                                    .navigationBarHidden(true)
                             }
                         )
-                        //                            HStack {
-                        //
-                        //                                Text("#\(pokemon.id)")
-                        //
-                        //                                Text(pokemon.name.capitalized)
-                        //
-                        //
-                        //                                Spacer()
-                        //
-                        //                                KFImage(URL(string: pokemon.imageUrl))
-                        //                                    .resizable()
-                        //                                    .scaledToFit()
-                        //                                    .frame(width: 80, height: 80)
-                        ////                                    .padding([.bottom, .trailing], 8)
-                        //
-                        //                            }
-                        
-                        
                     }
                     .onDelete(perform: delete)
                 }
                 .navigationTitle("Favorite Pokemons")
-//                .navigationBarHidden(true)
                 .navigationBarTitleDisplayMode(.inline)
             }
             Text("\(favoritePokemons.myList.count)/6 pokemons")
+                .padding(.vertical, 10)
         }
     }
     
-//    var formattedId: String {
-//        if pokemon.id / 10 < 1 {
-//            return "#00\(pokemon.id)"
-//        } else if pokemon.id / 10 < 10 {
-//            return "#0\(pokemon.id)"
-//        } else {
-//            return "#\(pokemon.id)"
-//        }
-//    }
-    
-    // ACKNOWLEDGED BUG: Deleting the last pokemon form the FavoriteViewList will crash the program, even checking with if
+    // ACKNOWLEDGED BUG: Deleting the last pokemon form the FavoriteViewList will crash the program
     func delete(at offsets: IndexSet) {
         if favoritePokemons.myList.count > 0 {
             favoritePokemons.myList.remove(atOffsets: offsets)
@@ -132,12 +77,4 @@ struct FavoriteListView: View {
             return
         }
     }
-        
-
 }
-
-//struct FavoriteListView_Previews: PreviewProvider {
-//    static var previews: some View {
-////        FavoriteListView()
-//    }
-//}
