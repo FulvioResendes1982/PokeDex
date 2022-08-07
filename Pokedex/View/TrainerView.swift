@@ -5,6 +5,22 @@
 //  Created by ドロケ on 04/08/2022.
 //
 
+/*
+  RMIT University Vietnam
+  Course: COSC2659 iOS Development
+  Semester: 2022B
+  Assessment: Assignment 1
+  Project name: Pokedex
+  Author: Nguyen Quoc Hoang
+  ID: s3697305
+  Created date: 31/07/2022
+  Last modified: 07/08/2022
+  Acknowledgement:
+    - Foundation: https://github.com/TomHuynhSG/SSETContactList
+    - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
+    - Apple Developer: https://developer.apple.com/
+*/
+
 import SwiftUI
 
 
@@ -42,7 +58,7 @@ struct TrainerView: View {
                             .clipShape(Circle())
                             .overlay(Circle().stroke(Color(.white),lineWidth: 4))
                             .offset(y: -110)
-                            .padding(.bottom, -110)
+                            .padding(.bottom, -100)
                             .onTapGesture {
                                 if let url = URL(string: info["facebook"]!) {
                                     UIApplication.shared.open(url)
@@ -249,7 +265,7 @@ struct TrainerView: View {
 
 var info = [
     "about": "Hi my name is Hoang, some might know me as Brian. This is my very first iOS app I ever made, and I'm already lovin' iOS development 😍. I chose Pokedex as Pokemon was my best childhood game. I remember I would wake up at 6am to train some of my Pokemons before school when I was in elementary. I hope this app also brings back some good memory if you happen to be a Pokemon fan like me.",
-    "doroke": "\"Doroke\" is my IGN (In Game Name) for most of the games I play.",
+    "doroke": "\"Doroke\" (or 「ドロケ」) is my IGN (In Game Name) for most of the games I play.",
     "github": "https://github.com/hoangdesu/Pokemon-iOS",
     "website": "https://hoangdesu.com/",
     "linkedin": "https://www.linkedin.com/in/hoangdesu/",
