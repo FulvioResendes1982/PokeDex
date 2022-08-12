@@ -56,14 +56,14 @@ This app is built with:
 
 **Add Pokemon to Favorite list**
 
-<img src="./images/add.gif" width="40%">
+<img src="./images/add.gif" width="80%">
 </div>
 
 <div align="center">
 
 **Remove Pokemon from Favorite list**
 
-<img src="./images/remove.gif" width="40%">
+<img src="./images/remove.gif" width="80%">
 </div>
 </div>
 
@@ -73,14 +73,14 @@ This app is built with:
 
 **Filtering by Pokemon, ID and type**
 
-<img src="./images/search.gif" width="40%">
+<img src="./images/search.gif" width="80%">
 </div>
 
 <div align="center">
 
 **Map View:** random spawn locations
 
-<img src="./images/map.gif" width="40%">
+<img src="./images/map.gif" width="80%">
 </div>
 </div>
 
@@ -90,14 +90,14 @@ This app is built with:
 
 **Barchart animation**
 
-<img src="./images/barchart.gif" width="40%">
+<img src="./images/barchart.gif" width="80%">
 </div>
 
 <div align="center">
 
 **Trainer information**
 
-<img src="./images/trainer.gif" width="40%">
+<img src="./images/trainer.gif" width="80%">
 </div>
 </div>
 
