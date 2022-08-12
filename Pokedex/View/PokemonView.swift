@@ -303,7 +303,7 @@ struct BarChartView: View {
                     .foregroundColor(Color(.systemGray5))
                 
                 Capsule()
-                    .frame(width: offset, height: capsuleHeight) //.animation(.default)
+                    .frame(width: offset, height: capsuleHeight)
                     .foregroundColor(attribute == "attack" ? .red : .blue)
                     .scaleEffect(x: barChartValue / capsuleWidth, anchor: .leading)
                     .onAppear {
