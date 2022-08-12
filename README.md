@@ -49,57 +49,13 @@ This app is built with:
 
 # Features
 
-<!-- row 1 -->
-
-<div style="display: flex; margin-bottom: 50px;">
-<div align="center">
-
-**Add Pokemon to Favorite list**
-
-<img src="./images/add.gif" width="50%">
-</div>
-
-<div align="center">
-
-**Remove Pokemon from Favorite list**
-
-<img src="./images/remove.gif" width="50%">
-</div>
-</div>
-
-<!-- row 2 -->
-<div style="display: flex; margin-bottom: 50px;">
-<div align="center">
-
-**Filtering by Pokemon, ID and type**
-
-<img src="./images/search.gif" width="50%">
-</div>
-
-<div align="center">
-
-**Map View:** random spawn locations
-
-<img src="./images/map.gif" width="50%">
-</div>
-</div>
-
-<!-- row 3 -->
-<div style="display: flex; margin-bottom: 50px;">
-<div align="center">
-
-**Barchart animation**
-
-<img src="./images/barchart.gif" width="50%">
-</div>
-
-<div align="center">
-
-**Trainer information**
-
-<img src="./images/trainer.gif" width="50%">
-</div>
-</div>
+|  **Add Pokemon to Favorite list**  |  **Remove Pokemon from Favorite list**  |  
+| ---- | ---- | 
+|  <img src="./images/add.gif" width="300">  |  <img src="./images/remove.gif" width="300">  |  
+|  **Filtering by Pokemon, ID and type**  |  **Map View:** random spawn locations  |  
+|  <img src="./images/search.gif" width="300">  |  <img src="./images/map.gif" width="300">  |  
+|  **Barchart animation**  |  **Trainer information**  |  
+|  <img src="./images/barchart.gif" width="300">  |  <img src="./images/trainer.gif" width="300">  |
 
 <a name="demo"></a>
 
