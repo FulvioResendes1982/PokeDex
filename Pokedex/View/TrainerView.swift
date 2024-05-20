@@ -1,26 +1,3 @@
-//
-//  Test.swift
-//  Pokedex
-//
-//  Created by ドロケ on 04/08/2022.
-//
-
-/*
- RMIT University Vietnam
- Course: COSC2659 iOS Development
- Semester: 2022B
- Assessment: Assignment 1
- Project name: Pokedex
- Author: Nguyen Quoc Hoang
- ID: s3697305
- Created date: 31/07/2022
- Last modified: 07/08/2022
- Acknowledgement:
- - Foundation: https://github.com/TomHuynhSG/SSETContactList
- - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
- - Apple Developer: https://developer.apple.com/
- */
-
 import SwiftUI
 
 struct TrainerView: View {
@@ -49,14 +26,9 @@ struct TrainerView: View {
                             .overlay(Circle().stroke(Color(.systemGray6),lineWidth: 4))
                             .offset(y: -110)
                             .padding(.bottom, -110)
-                            .onTapGesture {
-                                if let url = URL(string: info["facebook"]!) {
-                                    UIApplication.shared.open(url)
-                                }
-                            }
                         
                         HStack(alignment: .firstTextBaseline) {
-                            Text("Hoang Nguyen")
+                            Text("Fulvio")
                                 .font(.title)
                                 .bold()
                                 .padding(.bottom, 1)
@@ -93,7 +65,6 @@ struct TrainerView: View {
                         
                         Text(info["author"]!)
                             .lineLimit(nil)
-                            .frame(height: 210)
                             .padding(.bottom, 12)
                         
                         Text("🚀 About this app")
@@ -106,12 +77,12 @@ struct TrainerView: View {
                             .frame(height: 140)
                             .padding(.bottom, 12)
                         
-                        Text("🤔 \"Doroke?\"")
+                        Text("🤔 \"Fulvio?\"")
                             .font(.headline)
                             .bold()
                             .padding(.bottom, 1)
                         
-                        Text(info["doroke"]!)
+                        Text(info["fulvio"]!)
                             .lineLimit(nil)
                             .frame(height: 50)
                             .padding(.bottom, 12)
@@ -122,40 +93,6 @@ struct TrainerView: View {
                             .padding(.bottom, 1)
                         
                         VStack(alignment: .leading) {
-                            HStack {
-                                Image("github")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .opacity(0.8)
-                                
-                                Text("Repo for this app")
-                                    .underline()
-                                    .foregroundColor(.blue)
-                                    .padding(.bottom, 1)
-                                    .onTapGesture {
-                                        if let url = URL(string: info["github"]!) {
-                                            UIApplication.shared.open(url)
-                                        }
-                                    }
-                            }
-                            
-                            HStack {
-                                Image("website")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
-                                    .opacity(0.8)
-                                
-                                Text("Personal website")
-                                    .underline()
-                                    .foregroundColor(.blue)
-                                    .padding(.bottom, 1)
-                                    .onTapGesture {
-                                        if let url = URL(string: info["website"]!) {
-                                            UIApplication.shared.open(url)
-                                        }
-                                    }
-                            }
-                            
                             HStack {
                                 Image("linkedin")
                                     .resizable()
@@ -184,11 +121,8 @@ struct TrainerView: View {
 }
 
 var info = [
-    "author": "Hi my name is Hoang, some might know me as Brian. This is my very first iOS app I ever made, and I'm already lovin' iOS development 😍. I chose Pokedex as Pokemon was my best childhood game. I remember I would wake up at 6am to train some of my Pokemons before school when I was in elementary school. I hope this app also brings back some good memory if you happen to be a Pokemon fan like me.",
-    "about": "This is a full-fledged Pokedex app, built with Swift 5.1 and SwiftUI 3 and targeted at iOS > 15.5. It has all the core functionalities such as search by name, ID or type. You can also add Pokemons to your Favorite List, up to 6 of them (following the original gameplay).",
-    "doroke": "\"Doroke\" or 「ドロケ」is my IGN (In Game Name) for most of the games I play.",
-    "github": "https://github.com/hoangdesu/Pokedex-iOS",
-    "website": "https://hoangdesu.com/",
-    "linkedin": "https://www.linkedin.com/in/hoangdesu/",
-    "facebook": "https://www.facebook.com/Hoangdayo"
+    "author": "Hi my name is Fulvio and I love building new things using Swift.",
+    "about": "This is a full-fledged Pokedex app, built with Swift 5.1 and SwiftUI 3 and targeted at iOS > 15.5. It has all the core functionalities such as search by name or ID. You can also add Pokemons to your Favorite List, up to 6 of them (following the original gameplay).",
+    "fulvio": "\"Fulvio\" for most of the games I play.",
+    "linkedin": "https://www.linkedin.com/in/fulvio-dev-mobile-ios-swift/",
 ]

@@ -1,26 +1,3 @@
-//
-//  PokemonView.swift
-//  Pokedex
-//
-//  Created by ドロケ on 31/07/2022.
-//
-
-/*
- RMIT University Vietnam
- Course: COSC2659 iOS Development
- Semester: 2022B
- Assessment: Assignment 1
- Project name: Pokedex
- Author: Nguyen Quoc Hoang
- ID: s3697305
- Created date: 31/07/2022
- Last modified: 07/08/2022
- Acknowledgement:
- - Foundation: https://github.com/TomHuynhSG/SSETContactList
- - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
- - Apple Developer: https://developer.apple.com/
- */
-
 import SwiftUI
 import Kingfisher
 import CoreLocation
@@ -40,9 +17,9 @@ struct PokemonView: View {
     init(pokemon: Pokemon, pokemonViewModel: PokemonViewModel, favoritePokemons: FavoritePokemon) {
         self.pokemon = pokemon
         self.pokemonViewModel = pokemonViewModel
-        self.backgroundColor = Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type))
+        self.backgroundColor = Color(pokemonViewModel.getBackgroundColor(forType: pokemon.types?.first?.type.name ?? ""))
         self.favoritePokemons = favoritePokemons
-        self.isInFavoriteList = favoritePokemons.myList.contains(where: { $0.name == pokemon.name })
+        self.isInFavoriteList = favoritePokemons.myList.contains(where: { $0.name == pokemonViewModel.pokemon.name })
     }
     
     var foreverAnimation: Animation {
@@ -90,11 +67,11 @@ struct PokemonView: View {
                                         }
                                         .padding(.top, 20)
                                 } else {
-                                    Ellipse()
-                                        .fill(Color.black)
-                                        .frame(width: 190, height: 30)
-                                        .offset(y: 105)
-                                        .opacity(0.1)
+                                    KFImage(URL(string: pokemon.sprites?.frontDefault ?? ""))
+                                        .resizable()
+                                        .scaledToFit()
+                                        .frame(width: 100, height: 100)
+                                        .padding([.bottom, .trailing], 8)
                                 }
                                 
                                 Button(action: {
@@ -103,7 +80,7 @@ struct PokemonView: View {
                                         showDialogState = true
                                     }
                                 }) {
-                                    KFImage(URL(string: pokemon.imageUrl))
+                                    KFImage(URL(string: pokemon.imageUrl ?? ""))
                                         .resizable()
                                         .scaledToFit()
                                         .frame(width: 200, height: 200)
@@ -137,28 +114,16 @@ struct PokemonView: View {
                         }
                         
                         VStack {
-                            Text(pokemon.name.capitalized)
+                            Text(pokemon.name?.capitalized ?? "")
                                 .font(.largeTitle)
                             
-                            Text(pokemon.type.capitalized)
+                            Text(pokemon.types?.first?.type.name.capitalized ?? "")
                                 .font(.subheadline).bold()
                                 .foregroundColor(.white)
                                 .padding(.init(top: 8, leading: 24, bottom: 8, trailing: 24))
-                                .background(Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type)))
+                                .background(Color(pokemonViewModel.getBackgroundColor(forType: pokemon.types?.first?.type.name ?? "")))
                                 .cornerRadius(20)
                                 .padding(.top, -12)
-                            
-                            HStack() {
-                                Text("Description")
-                                    .font(.system(size: 18, weight: .semibold))
-                                    .padding(.bottom, 8)
-                                
-                                Spacer()
-                            }
-                            .padding(.top, 10)
-                            
-                            Text(formattedDescription)
-                                .padding(0)
                             
                             StatsViews(pokemon: pokemon)
                         }
@@ -177,30 +142,21 @@ struct PokemonView: View {
     
     var dialogTitle: String {
         if !isInFavoriteList {
-            return "I choose you \(pokemon.name.capitalized)!"
+            return "I choose you \(pokemon.name?.capitalized ?? "") !"
         } else {
-            return "Goodbye \(pokemon.name.capitalized) :("
+            return "Goodbye \(pokemon.name?.capitalized ?? "") :("
         }
     }
     
     var formattedId: String {
-        if pokemon.id / 10 < 1 {
-            return "#00\(pokemon.id)"
-        } else if pokemon.id / 10 < 10 {
-            return "#0\(pokemon.id)"
+        guard let id = pokemon.id else { return ""}
+        if id / 10 < 1 {
+            return "#00\(id)"
+        } else if id / 10 < 10 {
+            return "#0\(id)"
         } else {
-            return "#\(pokemon.id)"
+            return "#\(id)"
         }
-    }
-    
-    var formattedDescription: String {
-        var description = ""
-        for char in pokemon.description {
-            if char != "\n" || char != "\0" {
-                description += String(char)
-            }
-        }
-        return description
     }
 }
 
@@ -262,14 +218,16 @@ struct StatsViews: View {
     }
     
     var heightToString: String {
-        let m = (Double(pokemon.height) / 10.0)
+        guard let height = pokemon.height else { return "" }
+        let m = (Double(height) / 10.0)
         let ft = m * 3.281
         return String(format: "%.2f m (%.2f ft)", m, ft)
     }
     
     
     var weightToString: String {
-        let kg = (Double(pokemon.weight) / 10.0)
+        guard let weight = pokemon.weight else { return "" }
+        let kg = (Double(weight) / 10.0)
         let lbs = kg * 2.205
         return String(format: "%.2f kg (%.2f lbs)", kg, lbs)
     }
@@ -318,9 +276,15 @@ struct BarChartView: View {
         var val: Int
         
         if attribute == "attack" {
-            val = pokemon.attack
+            val = pokemon.stats?
+                .filter { $0.stat.name == "attack" }
+                .map { $0.baseStat }
+                .first ?? 0
         } else if attribute == "defense" {
-            val = pokemon.defense
+            val = pokemon.stats?
+                .filter { $0.stat.name == "defense" }
+                .map { $0.baseStat }
+                .first ?? 0
         } else {
             val = 0
         }

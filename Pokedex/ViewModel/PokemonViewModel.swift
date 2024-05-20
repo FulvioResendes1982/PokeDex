@@ -1,51 +1,55 @@
-//
-//  PokemonViewModel.swift
-//  Pokedex
-//
-//  Created by ドロケ on 02/08/2022.
-//
-
-/*
- RMIT University Vietnam
- Course: COSC2659 iOS Development
- Semester: 2022B
- Assessment: Assignment 1
- Project name: Pokedex
- Author: Nguyen Quoc Hoang
- ID: s3697305
- Created date: 31/07/2022
- Last modified: 07/08/2022
- Acknowledgement:
- - Foundation: https://github.com/TomHuynhSG/SSETContactList
- - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
- - Apple Developer: https://developer.apple.com/
- */
-
 import SwiftUI
+import Foundation
+import Combine
 
 class PokemonViewModel: ObservableObject {
-    let apiURL = "https://pokedex-bb36f.firebaseio.com/pokemon.json"
-    
-    @Published var pokemons = [Pokemon]()
-    
+    @Published var pokemonEntries: [PokemonEntry] = []
+    @Published var pokemon = Pokemon()
+    @Published var pokemons: [Pokemon] = []
+
+    private var cancellable: AnyCancellable?
+
     init() {
-        fetchPokemons()
+        getData() { pokemonEntries in
+            self.pokemonEntries = pokemonEntries
+            
+            for pokemon in pokemonEntries {
+                self.fetchSelectedPokemon(stringUrl: pokemon.url) { selectedPokemon in
+                    guard let pokemonSelected = selectedPokemon else { return }
+                    self.pokemons.append(pokemonSelected)
+                }
+            }
+        }
     }
     
-    func fetchPokemons() {
-        guard let url = URL(string: apiURL) else { return }
+    func getData(completion: @escaping ([PokemonEntry]) -> ()) {
+        guard let url = URL(string: "https://pokeapi.co/api/v2/pokemon?limit=151") else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, res, err ) in
-            // remove unwanted "null" string from the data
-            guard let data = data?.parseData(removeString: "null,") else { return }
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
             
-            // using JSON decoder to decode from data (string) to Swift dictionary, and return an array of Pokemon
-            guard let decodedPokemons = try? JSONDecoder().decode([Pokemon].self, from: data) else { return }
+            let pokemonList = try! JSONDecoder().decode(PokemonList.self, from: data)
             
-            // reload data on the main thread
             DispatchQueue.main.async {
-                self.pokemons = decodedPokemons
+                completion(pokemonList.results)
             }
+            
+        }.resume()
+    }
+    
+    
+    func fetchSelectedPokemon(stringUrl: String, completion: @escaping (Pokemon?) -> ()) {
+        guard let url = URL(string: stringUrl) else { return }
+        
+        URLSession.shared.dataTask(with: url) { (data, response, error) in
+            guard let data = data else { return }
+            
+            let pokemon = try! JSONDecoder().decode(Pokemon.self, from: data)
+            
+            DispatchQueue.main.async {
+                completion(pokemon)
+            }
+            
         }.resume()
     }
     

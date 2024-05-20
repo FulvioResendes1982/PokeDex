@@ -1,46 +1,22 @@
-//
-//  PokemonCard.swift
-//  Pokedex
-//
-//  Created by ドロケ on 31/07/2022.
-//
-
-/*
- RMIT University Vietnam
- Course: COSC2659 iOS Development
- Semester: 2022B
- Assessment: Assignment 1
- Project name: Pokedex
- Author: Nguyen Quoc Hoang
- ID: s3697305
- Created date: 31/07/2022
- Last modified: 07/08/2022
- Acknowledgement:
- - Foundation: https://github.com/TomHuynhSG/SSETContactList
- - Some design ideas: https://github.com/MatheusPires99/pokedex, https://github.com/oskarko/Pokedex
- - Apple Developer: https://developer.apple.com/
- */
-
-
 import SwiftUI
 import Kingfisher
 
 struct PokemonCard: View {
+    let viewModel: PokemonViewModel
     let pokemon: Pokemon
-    let pokemonViewModel: PokemonViewModel
     let backgroundColor: Color
     
-    init(pokemon: Pokemon, pokemonViewModel: PokemonViewModel) {
+    init(pokemon: Pokemon, viewModel: PokemonViewModel) {
         self.pokemon = pokemon
-        self.pokemonViewModel = pokemonViewModel
-        self.backgroundColor = Color(pokemonViewModel.getBackgroundColor(forType: pokemon.type))
+        self.viewModel = viewModel
+        self.backgroundColor = Color(viewModel.getBackgroundColor(forType: pokemon.types?.first?.type.name ?? ""))
     }
     
     var body: some View {
         ZStack {
             VStack(alignment: .leading) {
                 HStack {
-                    Text(pokemon.name.capitalized)
+                    Text(pokemon.name?.capitalized ?? "")
                         .font(.headline)
                         .foregroundColor(.white)
                         .padding(.top, 10)
@@ -54,7 +30,7 @@ struct PokemonCard: View {
                 }
                 
                 HStack {
-                    Text(pokemon.type.capitalized)
+                    Text(pokemon.types?.first?.type.name.capitalized ?? "")
                         .font(.subheadline).bold()
                         .foregroundColor(.white)
                         .padding(.horizontal, 16)
@@ -65,7 +41,7 @@ struct PokemonCard: View {
                         )
                         .frame(width: 100, height: 24)
                     
-                    KFImage(URL(string: pokemon.imageUrl))
+                    KFImage(URL(string: pokemon.sprites?.frontDefault ?? ""))
                         .resizable()
                         .scaledToFit()
                         .frame(width: 60, height: 60)
@@ -79,12 +55,13 @@ struct PokemonCard: View {
     }
     
     var formattedId: String {
-        if pokemon.id / 10 < 1 {
-            return "#00\(pokemon.id)"
-        } else if pokemon.id / 10 < 10 {
-            return "#0\(pokemon.id)"
+        guard let id = pokemon.id else { return ""}
+        if id / 10 < 1 {
+            return "#00\(id)"
+        } else if id / 10 < 10 {
+            return "#0\(id)"
         } else {
-            return "#\(pokemon.id)"
+            return "#\(id)"
         }
     }
 }

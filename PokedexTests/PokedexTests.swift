@@ -1,10 +1,3 @@
-//
-//  PokedexTests.swift
-//  PokedexTests
-//
-//  Created by ドロケ on 31/07/2022.
-//
-
 import XCTest
 @testable import Pokedex
 

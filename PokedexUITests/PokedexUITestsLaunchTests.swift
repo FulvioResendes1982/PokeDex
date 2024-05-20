@@ -1,10 +1,3 @@
-//
-//  PokedexUITestsLaunchTests.swift
-//  PokedexUITests
-//
-//  Created by ドロケ on 31/07/2022.
-//
-
 import XCTest
 
 class PokedexUITestsLaunchTests: XCTestCase {
