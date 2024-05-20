@@ -16,9 +16,7 @@
 - [About](#about)
 - [Requirements](#requirements)
 - [Features](#features)
-- [Demo video](#demo)
 - [Acknowledgement](#acknowledgement)
-- [Connections](#connections)
 
 <a name="about"></a>
 
@@ -54,8 +52,8 @@ This app is built with:
 |  <img src="./images/add.gif" width="300">  |  <img src="./images/remove.gif" width="300">  |  
 |  **Filtering by Pokemon, ID and type**  |  **Map View:** random spawn locations  |  
 |  <img src="./images/search.gif" width="300">  |  <img src="./images/map.gif" width="300">  |  
-|  **Barchart animation**  |  **Trainer information**  |  
-|  <img src="./images/barchart.gif" width="300">  |  <img src="./images/trainer.gif" width="300">  |
+|  **Barchart animation**  |  
+<img src="./images/barchart.gif" width="300"> 
 
 
 <a name="acknowledgement"></a>
