@@ -16,9 +16,7 @@
 - [About](#about)
 - [Requirements](#requirements)
 - [Features](#features)
-- [Demo video](#demo)
 - [Acknowledgement](#acknowledgement)
-- [Connections](#connections)
 
 <a name="about"></a>
 
@@ -54,16 +52,8 @@ This app is built with:
 |  <img src="./images/add.gif" width="300">  |  <img src="./images/remove.gif" width="300">  |  
 |  **Filtering by Pokemon, ID and type**  |  **Map View:** random spawn locations  |  
 |  <img src="./images/search.gif" width="300">  |  <img src="./images/map.gif" width="300">  |  
-|  **Barchart animation**  |  **Trainer information**  |  
-|  <img src="./images/barchart.gif" width="300">  |  <img src="./images/trainer.gif" width="300">  |
-
-<a name="demo"></a>
-
-# Demo video
-
-Full demo video on the iPhone 12: https://youtu.be/HMcu9xeMLvU
-
-[![Pokedex app demo](https://img.youtube.com/vi/HMcu9xeMLvU/0.jpg)](https://www.youtube.com/watch?v=HMcu9xeMLvU)
+|  **Barchart animation**  |  
+<img src="./images/barchart.gif" width="300"> 
 
 
 <a name="acknowledgement"></a>
@@ -74,15 +64,6 @@ Some design and ideas are from these sources:
 - https://github.com/oskarko/Pokedex
 - https://github.com/MatheusPires99/pokedex
 
-<a name="connections"></a>
-
-# Connections
-
-* <a href="https://hoangdesu.com/" target="_blank">Website</a>
-* <a href="https://www.linkedin.com/in/hoangdesu/" target="_blank">LinkedIn</a>
-* <a href="https://www.facebook.com/Hoangdayo/" target="_blank">Facebook</a>
-* <a href="https://www.instagram.com/hoang.desu/" target="_blank">Instagram</a>
-* <a href="mailto:hoangdesu@gmail.com" target="_blank">Email</a>
 
 ---
 If you find this project useful, drop me a star ⭐️. I would love to hear about it!
