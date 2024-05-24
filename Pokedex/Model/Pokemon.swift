@@ -1,7 +1,7 @@
 import Foundation
 
-struct Pokemon: Decodable, Identifiable {
-    let id: Int?
+public struct Pokemon: Decodable, Identifiable {
+    public let id: Int?
     let name: String?
     let imageUrl: String?
     let height: Int?

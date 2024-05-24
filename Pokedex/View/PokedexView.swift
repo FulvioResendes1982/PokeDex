@@ -2,10 +2,7 @@ import SwiftUI
 
 struct PokedexView: View {
     private let gridItems = [GridItem(.flexible()), GridItem(.flexible())]
-    
-    @State var pokemonEntries = [PokemonEntry]()
-    
-    @ObservedObject var viewModel = PokemonViewModel()
+    @ObservedObject var viewModel: PokemonViewModel
     @ObservedObject var favoritePokemons = FavoritePokemon()
     
     @State private var searchText: String = ""
@@ -40,6 +37,16 @@ struct PokedexView: View {
                             })
                     )
             }
+            .onAppear {
+                viewModel.getData() { pokemonEntries in
+                    for pokemon in pokemonEntries {
+                        self.viewModel.fetchSelectedPokemon(stringUrl: pokemon.url) { selectedPokemon in
+                            guard let pokemonSelected = selectedPokemon else { return }
+                            self.viewModel.pokemons.append(pokemonSelected)
+                        }
+                    }
+                }
+            }
             .searchable(text: $searchText)
             .padding(10)
         }
@@ -48,7 +55,7 @@ struct PokedexView: View {
     var status: String {
         var pokeCount = ""
         
-        if (viewModel.pokemonEntries.count == 0) {
+        if (viewModel.pokemons.count == 0) {
             return "Loading..."
         } else if (filteredPokemons.count == 0) {
             return "No pokemon found :("
@@ -59,22 +66,14 @@ struct PokedexView: View {
     }
     
     var filteredPokemons: [Pokemon] {
-        var filteredList: [Pokemon] = []
-        
-        // search by name or id
-        for pokemon in viewModel.pokemons {
-            if ((pokemon.name?.contains(searchText.lowercased())) != nil) {
-                filteredList.append(pokemon)
-            } else if "\(pokemon.id ?? 0)" == searchText {
-                filteredList.append(pokemon)
-            }
+        return searchText == "" ? viewModel.pokemons : viewModel.pokemons.filter {
+            $0.name?.contains(searchText.lowercased()) == true
         }
-        return searchText == "" ? viewModel.pokemons : filteredList
     }
 }
 
 struct PokedexView_Previews: PreviewProvider {
     static var previews: some View {
-        PokedexView()
+        PokedexView(viewModel: PokemonViewModel(service: Service()))
     }
 }
